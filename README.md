@@ -20,7 +20,7 @@ colnames(X) <- paste("Gene",1:100,sep="")
 colnames(Y) <- paste("Lipid",1:100,sep="")
 X = scale(X, scale=T)
 Y = scale(Y, scale=T)
-## group factor could be omit if you don't have any group 
+## group factor could be omitted if you don't have any group 
 group <- rep(c("Ctrl","Treat"),each = 25)
 ```
 Do cross validation with group information
