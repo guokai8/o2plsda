@@ -2,6 +2,7 @@
 #include <math.h>
 #include <iostream>
 #include <RcppEigen.h>
+#include <Rcpp.h>
 // [[Rcpp::depends(RcppArmadillo, RcppEigen)]]
 
 using namespace arma;
@@ -72,8 +73,7 @@ List split_str(CharacterVector x){
     IntegerVector y = seq_along(x);
     return sp(y,x);
 } 
-#include <Rcpp.h>
-using namespace Rcpp;
+
 
 // [[Rcpp::export]]
 SEXP unlist_cpp(const List& list)
