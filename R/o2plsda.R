@@ -1,6 +1,6 @@
 # OPLSDA - where X is the concatenated joint variance projection: cbind(Tp %*% t(Wp), Up %*% t(Cp)), 
 # y is the variable to regress and n is the desired number of components
-#' @ still under developing
+#' @title still under developing
 #' @export
 oplsda <- function(fit, y, n) {
     if(is.character(y)){
