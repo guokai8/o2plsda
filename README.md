@@ -35,7 +35,7 @@ cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 10)
 # The Qxy is  0.08222935  and the RMSE is:  2.030108 
 #####################################
 ```
-Then we can do the O2PLS analysis with nc = 5, nx = 3, ny =3
+Then we can do the O2PLS analysis with nc = 5, nx = 3, ny =3. You can also select the best paramaters by looking at the cross validation results.
 ```{r}
 fit <- o2pls(X,Y,5,3,3)
 summary(fit)
