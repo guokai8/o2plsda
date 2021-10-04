@@ -69,7 +69,7 @@ o2cv<-function(X,Y,nc,nx,ny,group=NULL,nr_folds,ncores=1,scale=FALSE,center=FALS
     Qxy <- as.data.frame(results)[1,11]
     RMSE <- as.data.frame(results)[1,10]
     cat("#####################################\n")
-    cat("The best paramaters are nc = ",n,", nx = ",nx,", ny = ",ny,"\n")
+    cat("The best paramaters are nc = ",nc,", nx = ",nx,", ny = ",ny,"\n")
     cat("#####################################\n")
     cat("The Qxy is ",Qxy, " and the RMSE is: ", RMSE,"\n")
     cat("#####################################\n")
