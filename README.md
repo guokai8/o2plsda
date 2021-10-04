@@ -27,7 +27,7 @@ Do cross validation with group information
 ```{r}
 set.seed(123)
 ## nr_folds : cross validation k-fold (suggest 10)
-o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 10)
+cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 10)
 #####################################
 # The best paramaters are nc =  5 , nx =  3 , ny =  3 
 #####################################
