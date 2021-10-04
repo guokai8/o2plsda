@@ -65,8 +65,8 @@ summary(fit)
 Extract the loadings and scores from the fit results
 
 ```{r}
-loadings(fit,loading="Xjoint")
-scores(fit,score="Xjoint")
+Xl <- loadings(fit,loading="Xjoint")
+Xs <- scores(fit,score="Xjoint")
 ```
 ## Note
 The package is still under development.
