@@ -1,12 +1,12 @@
 Package: o2plsda
 Type: Package
 Title: Omics data integration with o2plsda. 
-Version: 0.0.3
+Version: 0.0.5
 Date: 2021-10-02
 Author: Kai Guo
 Maintainer: Kai Guo <guokai8@gmail.com>
-Description: Integrate mutiple omics data and do discriminant analysis. 
+Description: Integrate mutiple omics data and do discriminant analysis. Generate the figures based on the results.
 License: GPL-v3
-Imports: Rcpp (>= 1.0.7), RcppArmadillo, RcppEigen, dplyr, magrittr, parallel
+Imports: Rcpp (>= 1.0.7), RcppArmadillo, RcppEigen, dplyr, magrittr, parallel,ggplot2
 LinkingTo: Rcpp, RcppArmadillo, RcppEigen
 RoxygenNote: 7.1.1
