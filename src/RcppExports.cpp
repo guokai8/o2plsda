@@ -174,6 +174,43 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// colsds
+NumericVector colsds(arma::mat& X);
+RcppExport SEXP _o2plsda_colsds(SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(colsds(X));
+    return rcpp_result_gen;
+END_RCPP
+}
+// column_sums
+NumericVector column_sums(arma::mat X);
+RcppExport SEXP _o2plsda_column_sums(SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(column_sums(X));
+    return rcpp_result_gen;
+END_RCPP
+}
+// opls
+List opls(arma::mat& X, arma::mat& Y, int ncomp, double maxiter, double tol);
+RcppExport SEXP _o2plsda_opls(SEXP XSEXP, SEXP YSEXP, SEXP ncompSEXP, SEXP maxiterSEXP, SEXP tolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< int >::type ncomp(ncompSEXP);
+    Rcpp::traits::input_parameter< double >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
+    rcpp_result_gen = Rcpp::wrap(opls(X, Y, ncomp, maxiter, tol));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_o2plsda_eigenmult", (DL_FUNC) &_o2plsda_eigenmult, 2},
@@ -190,6 +227,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_o2plsda_getMCCV_cpp", (DL_FUNC) &_o2plsda_getMCCV_cpp, 2},
     {"_o2plsda_s2", (DL_FUNC) &_o2plsda_s2, 1},
     {"_o2plsda_Q", (DL_FUNC) &_o2plsda_Q, 2},
+    {"_o2plsda_colsds", (DL_FUNC) &_o2plsda_colsds, 1},
+    {"_o2plsda_column_sums", (DL_FUNC) &_o2plsda_column_sums, 1},
+    {"_o2plsda_opls", (DL_FUNC) &_o2plsda_opls, 5},
     {NULL, NULL, 0}
 };
 

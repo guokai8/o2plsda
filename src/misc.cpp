@@ -8,12 +8,18 @@
 using namespace arma;
 using namespace Rcpp;
 
+//' @title two matrix mutiplication
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 SEXP eigenmult(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B){
     Eigen::MatrixXd C = A * B;
     return Rcpp::wrap(C);
 }
 
+//' @title three matrix mutiplication
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 SEXP eigenthree(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B, Eigen::Map<Eigen::MatrixXd> C){
     Eigen::MatrixXd D = A * B * C;
@@ -21,12 +27,19 @@ SEXP eigenthree(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B, Ei
 }
 
 
+//' @title trans matrix * matrix
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 Eigen::MatrixXd AtA(const Eigen::Map<Eigen::MatrixXd>& A) {
     int n(A.cols());
     return Eigen::MatrixXd(n,n).setZero().selfadjointView<Eigen::Lower>()
                                .rankUpdate(A.adjoint());
 }
+
+//' @title sort string
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 CharacterVector sort_str( std::vector< std::string > strings ) {
     
@@ -34,18 +47,26 @@ CharacterVector sort_str( std::vector< std::string > strings ) {
     return Rcpp::wrap(strings);
 }
 
+//' @title sampling a vector
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 IntegerVector sample_cpp(IntegerVector x, int n) {
     return sample(x, n, false); 
 }
 
-
+//' @title calculate RMSE
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 double rcpp_rmse(Rcpp::NumericVector& y, Rcpp::NumericVector& y_hat) {
     Rcpp::NumericVector diff = y - y_hat;
     return sqrt( Rcpp::sum(diff*diff) / y.size() );
 }
 
+//' @title order a vector of sting
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 IntegerVector order_str(CharacterVector& x) {
     // Order the elements of x by sorting y
@@ -56,6 +77,9 @@ IntegerVector order_str(CharacterVector& x) {
     // And return x in that order
     return idx;
 }
+//' @title order a vector
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 IntegerVector order_cpp(IntegerVector& x) {
     // Order the elements of x by sorting y
@@ -67,6 +91,9 @@ IntegerVector order_cpp(IntegerVector& x) {
     return idx;
 }
 
+//' @title split a vector
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 List split_str(CharacterVector x){
     Function sp("split");
@@ -74,7 +101,9 @@ List split_str(CharacterVector x){
     return sp(y,x);
 } 
 
-
+//' @title unlist a list
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 SEXP unlist_cpp(const List& list)
 {
@@ -104,6 +133,9 @@ SEXP unlist_cpp(const List& list)
     
 }
 
+//' @title lapply sampling
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 List sample_lapply(List X, int n){
     int lenx = X.size();
@@ -120,7 +152,9 @@ List sample_lapply(List X, int n){
     }
     return(res);
 }
-
+//' @title MCCV sampling
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 IntegerVector getMCCV_cpp(CharacterVector x,int n){
     IntegerVector o = order_str(x);
@@ -135,11 +169,17 @@ IntegerVector getMCCV_cpp(CharacterVector x,int n){
     }
     return(res);
 }
-
+//' @title sum square of a matrix
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 double s2(arma::mat x){
     return(arma::accu(pow(x,2)));
 }
+
+//' @title calcualte the Q value
+//' @keywords internal 
+//' @useDynLib o2plsda
 // [[Rcpp::export]]
 double Q(arma::mat y, arma::mat y_hat) {
     arma::mat diff = y - y_hat;
