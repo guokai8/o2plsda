@@ -10,7 +10,17 @@
 #' @rdname loadings
 #' @export
 loadings <- function(x, ...) UseMethod("loadings")
-
+#' Extract the loadings from an O2PLS fit
+#'
+#' This function extracts loading parameters from an O2PLS fit
+#'
+#' @param x Object of class \code{O2pls}
+#' @param loading the loadings for one of "Xjoint", "Yjoint", "Xorth", "Yorth"
+#' @param ... For consistency
+#' @return Loading matrix
+#' 
+#' @rdname loadings
+#' @export
 #' @export
 loadings.O2pls <- function(x,loading = c("Xjoint", "Yjoint", "Xorth", "Yorth"),...){
     x<-x@results
@@ -28,6 +38,23 @@ loadings.O2pls <- function(x,loading = c("Xjoint", "Yjoint", "Xorth", "Yorth"),.
     return(res)
     
 }
+#' @title extract the loading value from the O2PLSDA analysis
+#' @param loading 
+#' @export
+loadings.o2plsda <- function(x,loading ="Xloading",...){
+    if(loading=="Xloading"){
+        res <- x$Xloading
+    }else if(loading == "Yloading"){
+        res <- x$Yloading
+    }else{
+        stop('Please specify the loading: ["Xjoint", "Yjoint", "Xorth", "Yorth"] \n')
+    }
+    return(res)
+    
+}
+
+
+
 #' Extract the scores from an O2PLS fit
 #'
 #' This function extracts score matrices from an O2PLS fit
@@ -42,6 +69,14 @@ loadings.O2pls <- function(x,loading = c("Xjoint", "Yjoint", "Xorth", "Yorth"),.
 #' @export
 scores <- function(x, ...) UseMethod("scores")
 
+#' Extract the scores from an O2PLS fit
+#'
+#' This function extracts scores parameters from an O2PLS fit
+#'
+#' @param x Object of class \code{O2pls}
+#' @param score the scores matrix for one of "Xjoint", "Yjoint", "Xorth", "Yorth"
+#' @param ... Other arguments 
+#' @return score matrix
 #' @export
 scores.O2pls <- function(x, score = c("Xjoint", "Yjoint", "Xorth", "Yorth"),...){
     x<-x@results
@@ -59,3 +94,17 @@ scores.O2pls <- function(x, score = c("Xjoint", "Yjoint", "Xorth", "Yorth"),...)
     return(res)
     
 }
+#' Extract the scores from an O2PLS DA analysis
+#'
+#'
+#' @param x Object of class \code{O2pls}
+#' @param ... Other arguments 
+#' @return score matrix
+#' @export
+#' @author Kai Guo
+scores.o2plsda <- function(x,...){
+    res <- x$score
+    return(res)
+    
+}
+

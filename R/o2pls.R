@@ -136,10 +136,10 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
     R2Yp <- (s2(Yh)/SSY)/R2Ycorr
     Qx <- Q(Xt,Xh)
     Qy <- Q(Yt,Yh)
-    varXj = apply(Xscore,2,function(x)sum(x^2))
-    varYj = apply(Yscore,2,function(x)sum(x^2))
-    varXorth = apply(PYosc,2,function(x)sum(x^2))*apply(TYosc,2,function(x)sum(x^2))
-    varYorth = apply(PXosc,2,function(x)sum(x^2))*apply(UXosc,2,function(x)sum(x^2))
+    varXj = apply(Xscore,2,function(x)sum(x^2))/SSX
+    varYj = apply(Yscore,2,function(x)sum(x^2))/SSY
+    varXorth = apply(PYosc,2,function(x)sum(x^2))*apply(TYosc,2,function(x)sum(x^2))/SSX
+    varYorth = apply(PXosc,2,function(x)sum(x^2))*apply(UXosc,2,function(x)sum(x^2))/SSY
     rownames(Xscore) <- rownames(TYosc) <- rownames(Exy) <- rownames(Xt)
     rownames(Yscore) <- rownames(UXosc) <- rownames(Fxy) <- rownames(Yt)
     rownames(Xloading) <- rownames(PYosc) <- rownames(WYosc) <- colnames(Exy) <- colnames(Xt)
@@ -160,7 +160,7 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
                 varXj = varXj, varYj = varYj, 
                 varXorth = varXorth, varYorth =varYorth,
                 Exy = Exy, Fxy =Fxy,
-                R2X = R2X,R2Y = R2Y)
+                R2X = R2X, R2Y = R2Y)
     results <- new("O2pls",
                    X = Xt,
                    Y = Yt,

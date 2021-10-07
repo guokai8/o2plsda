@@ -1,32 +1,82 @@
-# OPLSDA - where X is the concatenated joint variance projection: cbind(Tp %*% t(Wp), Up %*% t(Cp)), 
-# y is the variable to regress and n is the desired number of components
-#' @title still under developing
+#' @title Orthogonal partial least squares discriminant analysis
+#' @description Computes orthogonal scores partial least squares 
+#' regressions with the NIPALS algorithm. It return a comprehensive set of
+#' pls outputs (e.g. scores and vip). 
+#' @usage 
+#' oplsda(X, Y, ncomp, scale, maxiter, tol)
+#' @param X a O2pls object or a matrix of predictor variables.
+#' @param Y a single vector indicate the group
+#' @param ncomp the number of pls components (the one joint components + 
+#'  number of orthogonal components ).
+#' @param scale logical indicating whether \code{X} must be scaled (suggest TRUE).
+#' @param maxiter maximum number of iterations.
+#' @param tol limit for convergence of the algorithm in the nipals algorithm.
+#' @return a list containing the following elements:
+#' \itemize{
+#' \item{\code{ncomp}}{ the number of components used(one joint components + 
+#'  number of orthogonal components }
+#' \item{\code{scores}}{ a matrix of scores corresponding to the observations 
+#' in \code{X}, The components retrieved correspond to the ones optimized 
+#' or specified.}
+#' \item{\code{Xloadings}}{ a matrix of loadings corresponding to the
+#'  explanatory variables. The components retrieved correspond to the ones
+#'  optimized or specified.}
+#' \item{\code{Yloadings}}{ a matrix of partial least squares loadings
+#'  corresponding to \code{Y}}
+#' \item{\code{vip}}{ the VIP matrix.}
+#' \item{\code{xvar}}{ a matrix indicating the standard deviation of each
+#'  component (sd), the variance explained by each single component
+#'  (explained_var) and the cumulative explained variance
+#'  (cumulative_explained_var). These values are
+#'  computed based on the data used to create the projection matrices.}
+#' \item{\code{projection_matrix}}{ the matrix of  projection matrix}
+#' \item{\code{weight}}{ a matrix of partial least squares ("pls") weights.}} 
+#' @author Kai Guo
 #' @export
-oplsda <- function(fit, y, n) {
-    if(is.character(y)){
-        y<-as.numeric(as.factor(y))
+oplsda <- function(X, Y, nc, scale=FALSE, center=TRUE, maxiter = 100, tol = 1E-5){
+    if (inherits(x = X, what = "O2pls")) {
+        result <- X@results
+        X <- cbind(result$Xscore%*%t(result$Xloading),result$Yscore%*%t(result$Yloading))
     }
-    X <- cbind(fit$Tp %*% t(fit$Wp), fit$Up %*% t(fit$Cp))
-    To <- Wo <- Po <- NULL
-    k <- 1
-    while(k <= n) {
-        w  <- t(t(y) %*% X / sum(y^2))           # 1
-        w  <- w / sqrt(sum(w^2))                 # 2
-        tt <- X %*% w                            # 3
-        cc <- t( t(tt) %*% y / sum(tt^2)  )      # 4
-        u  <- y %*% cc / sum(cc^2)               # 5
-        p  <- t( t(tt) %*% X / sum(tt^2)  )      # 6
-        wo <- p - sum(w * p) * w                 # 7
-        wo <- wo / sqrt(sum(wo^2))               # 8
-        tto <- X %*% wo                          # 9
-        po  <- t( t(tto) %*% X / sum(tto^2) )    # 10
-        Eopls  <- X - tto %*% t(po)              # 11
-        To <- cbind(To, tto)
-        Po <- cbind(Po, po)
-        Wo <- cbind(Wo, wo)
-        
-        X <- Eopls 
-        k <- k+1
+    X <- as.matrix(X)
+    if(is.character(Y)){
+        Y <- as.numeric(as.factor(Y))
     }
-    list(X=X, To=To, Po=Po, Wo=Wo)
+    Y <- as.matrix(cbind(Y))
+    if(nrow(X)!=nrow(Y)) stop("Y should have same length as number of X rows")
+    if(isTRUE(scale)){
+        X = scale(X,center,scale=TRUE)
+    }
+    if(isTRUE(center)&!isTRUE(scale)){
+        X = scale(X,center,scale=FALSE)
+    }
+    fit <- opls(X,Y,nc,maxiter,tol)
+    score <- fit$scores
+    colnames(score) <- paste0("LV",1:nc)
+    rownames(score) <- rownames(X)
+    Xloading <- t(fit$X_loadings)
+    colnames(Xloading) <- paste0("LV",1:nc)
+    rownames(Xloading) <- colnames(X)
+    Yloading <- fit$Y_loadings
+    vip <- fit$vip
+    colnames(vip) <- paste0("LV",1:nc)
+    rownames(vip) <- colnames(X)
+    xvar <- fit$variance$x_var
+    colnames(xvar) <- paste0("LV",1:nc)
+    rownames(xvar) <- c("sd","explained_var","cumulative_explained_var")
+    weight <- t(fit$weights)
+    rownames(weight) <- colnames(X)
+    colnames(weight) <- paste0("LV",1:nc)
+    projection_matrix <- fit$projection_mat
+    rownames(projection_matrix) <- colnames(X)
+    colnames(projection_matrix) <- paste0("LV",1:nc)
+    R2X <- s2(score%*%t(Xloading))/s2(X)
+    res <- list(ncomp = nc, score = score, Xloading = Xloading,
+              R2X = R2X,
+              Yloading = Yloading,
+              vip = vip, xvar = xvar,
+              weight = weight,
+              projection_matrix = projection_matrix)
+    class(res) <- "o2plsda"
+    return(res)
 }

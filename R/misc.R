@@ -39,14 +39,19 @@ summary.O2pls<-function(fit){
 }
 
 
-#' @title Print O2PLS.
-#' 
-#' 
+#' @title Print the summary of O2PLS results.
 #' @param x An O2pls object 
 #' @return NULL
-#'
 #' @author Kai Guo
 #' @export
 print.O2pls <- function (fit, ...) {
     summary(fit)
+}
+
+
+#' @export
+vip <- function(x,...){
+    res <- x$vip
+    return(res)
+    
 }

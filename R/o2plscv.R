@@ -85,6 +85,7 @@ o2cv<-function(X,Y,nc,nx,ny,group=NULL,nr_folds,ncores=1,scale=FALSE,center=FALS
 #' @param ny Integer. Number of orthogonal components in Y 
 #' @param group a vector to indicate the group for Y
 #' @param nr Integer to indicate the folds for cross validation
+#' @keywords internal
 #' @author Kai Guo
 
 .o2cv<-function(X,Y,n,nx,ny,group,nr){
