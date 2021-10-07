@@ -2,10 +2,51 @@
 % Please edit documentation in R/o2plsda.R
 \name{oplsda}
 \alias{oplsda}
-\title{still under developing}
+\title{Orthogonal partial least squares discriminant analysis}
 \usage{
-oplsda(fit, y, n)
+oplsda(X, Y, ncomp, scale, maxiter, tol)
+}
+\arguments{
+\item{X}{a O2pls object or a matrix of predictor variables.}
+
+\item{Y}{a single vector indicate the group}
+
+\item{scale}{logical indicating whether \code{X} must be scaled (suggest TRUE).}
+
+\item{maxiter}{maximum number of iterations.}
+
+\item{tol}{limit for convergence of the algorithm in the nipals algorithm.}
+
+\item{ncomp}{the number of pls components (the one joint components + 
+number of orthogonal components ).}
+}
+\value{
+a list containing the following elements:
+\itemize{
+\item{\code{ncomp}}{ the number of components used(one joint components + 
+ number of orthogonal components }
+\item{\code{scores}}{ a matrix of scores corresponding to the observations 
+in \code{X}, The components retrieved correspond to the ones optimized 
+or specified.}
+\item{\code{Xloadings}}{ a matrix of loadings corresponding to the
+ explanatory variables. The components retrieved correspond to the ones
+ optimized or specified.}
+\item{\code{Yloadings}}{ a matrix of partial least squares loadings
+ corresponding to \code{Y}}
+\item{\code{vip}}{ the VIP matrix.}
+\item{\code{xvar}}{ a matrix indicating the standard deviation of each
+ component (sd), the variance explained by each single component
+ (explained_var) and the cumulative explained variance
+ (cumulative_explained_var). These values are
+ computed based on the data used to create the projection matrices.}
+\item{\code{projection_matrix}}{ the matrix of  projection matrix}
+\item{\code{weight}}{ a matrix of partial least squares ("pls") weights.}}
 }
 \description{
-still under developing
+Computes orthogonal scores partial least squares 
+regressions with the NIPALS algorithm. It return a comprehensive set of
+pls outputs (e.g. scores and vip).
+}
+\author{
+Kai Guo
 }

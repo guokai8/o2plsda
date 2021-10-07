@@ -27,3 +27,4 @@ do cross-validation with group factors
 \author{
 Kai Guo
 }
+\keyword{internal}

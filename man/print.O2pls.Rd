@@ -2,7 +2,7 @@
 % Please edit documentation in R/misc.R
 \name{print.O2pls}
 \alias{print.O2pls}
-\title{Print O2PLS.}
+\title{Print the summary of O2PLS results.}
 \usage{
 \method{print}{O2pls}(fit, ...)
 }
@@ -10,7 +10,7 @@
 \item{x}{An O2pls object}
 }
 \description{
-Print O2PLS.
+Print the summary of O2PLS results.
 }
 \author{
 Kai Guo
