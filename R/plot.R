@@ -159,7 +159,7 @@ plot.o2plsda <- function(x,type = "score", var = "Xjoint",group = NULL,
                         ind = c(1,2), color = NULL,
                         top = 20, ellipse = TRUE,order=FALSE,
                         pt.size = 3, label = TRUE, label.size = 4,
-                        repel=TRUE, rotation =FALSE,...){
+                        repel=FALSE, rotation =FALSE,...){
     if(type == "score"){
         dd <- scores(x)
         va <- x$xvar[2,ind]
@@ -297,7 +297,7 @@ plot.plsda <- function(x,type = "score",group = NULL,
                          ind = c(1,2), color = NULL,
                          top = 20, ellipse = TRUE,order=FALSE,
                          pt.size = 3, label = TRUE, label.size = 4,
-                         repel=TRUE, rotation =FALSE,...){
+                         repel=FALSE, rotation =FALSE,...){
     if(type == "score"){
         dd <- scores(x)
         va <- x$xvar[ind]
