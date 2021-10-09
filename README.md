@@ -3,7 +3,7 @@
 
 
 ## Description
-_o2plsda_ provides functions to do O2PLS-DA analysis for mutiple omics integration. The package could use the group information (MCCV) when we select the best paramaters with cross-validation. The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" which published by Johan Trygg and Svante Wold at 2003. We also add PLS-DA in the package.
+_o2plsda_ provides functions to do O2PLS-DA analysis for mutiple omics integration. The package could use the group information (MCCV) when we select the best paramaters with cross-validation. The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" which published by Johan Trygg and Svante Wold at 2003. The package also add PLS-DA function.
 
 ## Installation
 ```{r,eval=FALSE}
