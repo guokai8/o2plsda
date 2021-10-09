@@ -1,4 +1,4 @@
-#' @title Score, vip or loading plot for the O2PLS or O2PLSDA results
+#' @title Score, vip or loading plot for the PLSDA, O2PLS or O2PLSDA results
 #' @param x an O2pls object
 #' @param ... Other arguments
 #' @return a ggplot2 object
