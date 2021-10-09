@@ -6,7 +6,7 @@
 #' oplsda(X, Y, ncomp, scale, maxiter, tol)
 #' @param X a O2pls object or a matrix of predictor variables.
 #' @param Y a single vector indicate the group
-#' @param ncomp the number of pls components (the one joint components + 
+#' @param nc the number of pls components (the one joint components + 
 #'  number of orthogonal components ).
 #' @param scale logical indicating whether \code{X} must be scaled (suggest TRUE).
 #' @param maxiter maximum number of iterations.

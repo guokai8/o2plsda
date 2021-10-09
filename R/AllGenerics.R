@@ -53,7 +53,14 @@ loadings.o2plsda <- function(x,loading ="Xloading",...){
     
 }
 
-
+#' @title extract the loading value from the O2PLSDA analysis
+#' @param loading 
+#' @export
+loadings.plsda <- function(x,...){
+    res <- x$Xloading
+    return(res)
+    
+}
 
 #' Extract the scores from an O2PLS fit
 #'
@@ -97,7 +104,7 @@ scores.O2pls <- function(x, score = c("Xjoint", "Yjoint", "Xorth", "Yorth"),...)
 #' Extract the scores from an O2PLS DA analysis
 #'
 #'
-#' @param x Object of class \code{O2pls}
+#' @param x Object of class \code{o2plsda}
 #' @param ... Other arguments 
 #' @return score matrix
 #' @export
@@ -107,4 +114,16 @@ scores.o2plsda <- function(x,...){
     return(res)
     
 }
-
+#' Extract the scores PLSDA analysis
+#'
+#'
+#' @param x Object of class \code{plsda}
+#' @param ... Other arguments 
+#' @return score matrix
+#' @export
+#' @author Kai Guo
+scores.plsda <- function(x,...){
+    res <- x$score
+    return(res)
+    
+}
