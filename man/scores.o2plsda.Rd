@@ -7,7 +7,7 @@
 \method{scores}{o2plsda}(x, ...)
 }
 \arguments{
-\item{x}{Object of class \code{O2pls}}
+\item{x}{Object of class \code{o2plsda}}
 
 \item{...}{Other arguments}
 }

@@ -11,14 +11,14 @@ oplsda(X, Y, ncomp, scale, maxiter, tol)
 
 \item{Y}{a single vector indicate the group}
 
+\item{nc}{the number of pls components (the one joint components + 
+number of orthogonal components ).}
+
 \item{scale}{logical indicating whether \code{X} must be scaled (suggest TRUE).}
 
 \item{maxiter}{maximum number of iterations.}
 
 \item{tol}{limit for convergence of the algorithm in the nipals algorithm.}
-
-\item{ncomp}{the number of pls components (the one joint components + 
-number of orthogonal components ).}
 }
 \value{
 a list containing the following elements:

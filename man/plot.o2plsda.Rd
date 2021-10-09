@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{plot.o2plsda}
 \alias{plot.o2plsda}
-\title{Score, VIP or loading plot for the O2PLS ddults}
+\title{Score, VIP or loading plot for the O2PLS results}
 \usage{
 \method{plot}{o2plsda}(
   x,
@@ -23,7 +23,7 @@
 )
 }
 \arguments{
-\item{x}{an O2pls object}
+\item{x}{an o2plsda object}
 
 \item{type}{score, vip or loading}
 
@@ -53,7 +53,7 @@
 a ggplot2 object
 }
 \description{
-Score, VIP or loading plot for the O2PLS ddults
+Score, VIP or loading plot for the O2PLS results
 }
 \author{
 Kai Guo

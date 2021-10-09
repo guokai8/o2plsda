@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{plot}
 \alias{plot}
-\title{Score, vip or loading plot for the O2PLS or O2PLSDAresults}
+\title{Score, vip or loading plot for the O2PLS or O2PLSDA results}
 \usage{
 plot(x, ...)
 }
@@ -15,7 +15,7 @@ plot(x, ...)
 a ggplot2 object
 }
 \description{
-Score, vip or loading plot for the O2PLS or O2PLSDAresults
+Score, vip or loading plot for the O2PLS or O2PLSDA results
 }
 \author{
 Kai Guo
