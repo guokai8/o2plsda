@@ -3,7 +3,7 @@
 #' @importFrom dplyr summarise mutate
 #' @importFrom magrittr %>%
 #' @importFrom parallel makePSOCKcluster clusterEvalQ clusterExport parLapply
-#' @importFrom parallel mclapply
+#' @importFrom parallel mclapply stopCluster
 #' @param X a Numeric matrix (input)
 #' @param Y a Numeric matrix (input)
 #' @param nc Integer. Number of joint PLS components.
@@ -14,10 +14,20 @@
 #' @param ncores Integer. Number of CPUs to use for cross validation
 #' @param scale boolean values determining if data should be scaled or not 
 #' @param center boolean values determining if data should be centered or not
+#' @examples 
+#' set.seed(123)
+#' X = matrix(rnorm(5000),50,100)
+#' Y = matrix(rnorm(5000),50,100)
+#' X = scale(X, scale=TRUE)
+#' Y = scale(Y, scale=TRUE)
+#' # group factor could be omitted if you don't have any group 
+#' group <- rep(c("Ctrl","Treat"),each = 25)
+#' cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 5)
 #' @author Kai Guo
 #' @export
 #' 
-o2cv<-function(X,Y,nc,nx,ny,group=NULL,nr_folds,ncores=1,scale=FALSE,center=FALSE){
+o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
+            scale = FALSE, center = FALSE){
     X <- as.matrix(X)
     Y <- as.matrix(Y)
     if(isTRUE(scale)){

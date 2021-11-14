@@ -1,10 +1,3 @@
-#' @title Score, vip or loading plot for the PLSDA, O2PLS or O2PLSDA results
-#' @param x an O2pls object
-#' @param ... Other arguments
-#' @return a ggplot2 object
-#' @export
-#' @author Kai Guo
-plot <- function(x, ...) UseMethod("plot")
 
 #' @title Score or loading plot for the O2PLS results
 #' @importFrom ggplot2 ggplot aes theme_classic geom_point stat_ellipse
@@ -12,6 +5,7 @@ plot <- function(x, ...) UseMethod("plot")
 #' @importFrom ggplot2 xlab ylab coord_flip theme element_text
 #' @importFrom ggplot2 geom_bar stat_ellipse
 #' @importFrom ggrepel geom_text_repel 
+#' @importFrom stats reorder
 #' @param x an O2pls object
 #' @param type score or loading 
 #' @param var specify Xjoint
@@ -25,12 +19,19 @@ plot <- function(x, ...) UseMethod("plot")
 #' @param label plot label or not (TRUE/FALSE) 
 #' @param label.size label size
 #' @param repel use ggrepel to show the label or not
+#' @param rotation flip the figure or not (TRUE/FALSE)
+#' @param ... For consistency 
+#' @examples 
+#' X <- matrix(rnorm(50),10,5)
+#' Y <- matrix(rnorm(50),10,5)
+#' fit <- o2pls(X,Y,2,1,1)
+#' plot(fit, type="score")
 #' @return a ggplot2 object
 #' @export
 #' @author Kai Guo
 plot.O2pls <- function(x, type = "score", var = "Xjoint",group = NULL, 
                        ind = c(1,2), color = NULL,
-                       top = 20, ellipse = TRUE,
+                       top = 20, ellipse = TRUE, order = FALSE,
                        pt.size = 3, label = TRUE, label.size = 4,
                        repel=TRUE,rotation =FALSE,...){
     if(type == "score"){
@@ -50,7 +51,13 @@ plot.O2pls <- function(x, type = "score", var = "Xjoint",group = NULL,
             stop('Please specify the score: ["Xjoint", "Yjoint", "Xorth", "Yorth"] \n')
         }
         dd <- as.data.frame(dd)
-        dd <- dd[,ind]
+        if(ncol(dd)==1){
+            dd <- dd[, 1, drop = FALSE]
+            dd[,2]<-1:nrow(dd)
+            dd <- dd[,c(2,1)]
+        }else{
+            dd <- dd[,ind]
+        }
         colnames(dd)[1:2]<-c("L1","L2")
         dd$lab <- rownames(dd)
         if(!is.null(group)){
@@ -139,6 +146,7 @@ plot.O2pls <- function(x, type = "score", var = "Xjoint",group = NULL,
 #' @importFrom ggplot2 xlab ylab coord_flip theme element_text
 #' @importFrom ggplot2 geom_bar stat_ellipse
 #' @importFrom ggrepel geom_text_repel
+#' @importFrom stats reorder
 #' @param x an o2plsda object
 #' @param type score, vip or loading 
 #' @param var specify Xjoint
@@ -152,7 +160,16 @@ plot.O2pls <- function(x, type = "score", var = "Xjoint",group = NULL,
 #' @param label plot label or not (TRUE/FALSE) 
 #' @param label.size label size
 #' @param repel use ggrepel to show the label or not
+#' @param rotation flip the figure or not (TRUE/FALSE)
+#' @param ... For consistency 
 #' @return a ggplot2 object
+#' @examples 
+#' X <- matrix(rnorm(50),10,5)
+#' Y <- matrix(rnorm(50),10,5)
+#' fit <- o2pls(X,Y,2,1,1)
+#' yy <- rep(c(0,1),5)
+#' fit0 <- oplsda(fit,yy,2)
+#' plot(fit0, type="score", group = factor(yy))
 #' @export
 #' @author Kai Guo
 plot.o2plsda <- function(x,type = "score", var = "Xjoint",group = NULL, 
@@ -164,7 +181,13 @@ plot.o2plsda <- function(x,type = "score", var = "Xjoint",group = NULL,
         dd <- scores(x)
         va <- x$xvar[2,ind]
         dd <- as.data.frame(dd)
-        dd <- dd[,ind]
+        if(ncol(dd)==1){
+            dd <- dd[, 1, drop = FALSE]
+            dd[,2]<-1:nrow(dd)
+            dd <- dd[,c(2,1)]
+        }else{
+            dd <- dd[,ind]
+        }
         colnames(dd)[1:2]<-c("L1","L2")
         dd$lab <- rownames(dd)
         if(!is.null(group)){
@@ -278,6 +301,7 @@ plot.o2plsda <- function(x,type = "score", var = "Xjoint",group = NULL,
 #' @importFrom ggplot2 xlab ylab coord_flip theme element_text
 #' @importFrom ggplot2 geom_bar stat_ellipse
 #' @importFrom ggrepel geom_text_repel
+#' @importFrom stats reorder
 #' @param x an plsda object
 #' @param type score, vip or loading 
 #' @param group color used for score plot
@@ -290,6 +314,13 @@ plot.o2plsda <- function(x,type = "score", var = "Xjoint",group = NULL,
 #' @param label plot label or not (TRUE/FALSE) 
 #' @param label.size label size
 #' @param repel use ggrepel to show the label or not
+#' @param rotation flip the figure or not (TRUE/FALSE)
+#' @param ... For consistency 
+#' @examples 
+#' X <- matrix(rnorm(50),10,5)
+#' yy <- rep(c(0,1),5)
+#' fit0 <- plsda(X,yy,2)
+#' plot(fit0, type = "score", group = factor(yy))
 #' @return a ggplot2 object
 #' @export
 #' @author Kai Guo
@@ -302,7 +333,13 @@ plot.plsda <- function(x,type = "score",group = NULL,
         dd <- scores(x)
         va <- x$xvar[ind]
         dd <- as.data.frame(dd)
-        dd <- dd[,ind]
+        if(ncol(dd)==1){
+            dd <- dd[, 1, drop = FALSE]
+            dd[,2]<-1:nrow(dd)
+            dd <- dd[,c(2,1)]
+        }else{
+            dd <- dd[,ind]
+        }
         colnames(dd)[1:2]<-c("L1","L2")
         dd$lab <- rownames(dd)
         if(!is.null(group)){

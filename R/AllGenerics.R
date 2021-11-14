@@ -39,7 +39,9 @@ loadings.O2pls <- function(x,loading = c("Xjoint", "Yjoint", "Xorth", "Yorth"),.
     
 }
 #' @title extract the loading value from the O2PLSDA analysis
-#' @param loading 
+#' @param x Object of class \code{o2plsda}
+#' @param loading the loadings for one of "Xjoint", "Yjoint", "Xorth", "Yorth"
+#' @param ... For consistency
 #' @export
 loadings.o2plsda <- function(x,loading ="Xloading",...){
     if(loading=="Xloading"){
@@ -53,8 +55,9 @@ loadings.o2plsda <- function(x,loading ="Xloading",...){
     
 }
 
-#' @title extract the loading value from the O2PLSDA analysis
-#' @param loading 
+#' @title extract the loading value from the PLSDA analysis
+#' @param x Object of class \code{plsda}
+#' @param ... For consistency
 #' @export
 loadings.plsda <- function(x,...){
     res <- x$Xloading

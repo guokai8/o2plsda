@@ -2,18 +2,17 @@
 #' @description Computes orthogonal scores partial least squares 
 #' regressions with the NIPALS algorithm. It return a comprehensive set of
 #' pls outputs (e.g. scores and vip). 
-#' @usage 
-#' oplsda(X, Y, ncomp, scale, maxiter, tol)
 #' @param X a O2pls object or a matrix of predictor variables.
 #' @param Y a single vector indicate the group
 #' @param nc the number of pls components (the one joint components + 
 #'  number of orthogonal components ).
 #' @param scale logical indicating whether \code{X} must be scaled (suggest TRUE).
+#' @param center boolean values determining if data should be centered or not
 #' @param maxiter maximum number of iterations.
 #' @param tol limit for convergence of the algorithm in the nipals algorithm.
 #' @return a list containing the following elements:
 #' \itemize{
-#' \item{\code{ncomp}}{ the number of components used(one joint components + 
+#' \item{\code{nc}}{ the number of components used(one joint components + 
 #'  number of orthogonal components }
 #' \item{\code{scores}}{ a matrix of scores corresponding to the observations 
 #' in \code{X}, The components retrieved correspond to the ones optimized 
@@ -31,6 +30,12 @@
 #'  computed based on the data used to create the projection matrices.}
 #' \item{\code{projection_matrix}}{ the matrix of  projection matrix}
 #' \item{\code{weight}}{ a matrix of partial least squares ("pls") weights.}} 
+#' @examples 
+#' X <- matrix(rnorm(50),10,5)
+#' Y <- matrix(rnorm(50),10,5)
+#' fit <- o2pls(X,Y,2,1,1)
+#' yy <- rep(c(0,1),5)
+#' fit0 <- oplsda(fit,yy,2)
 #' @author Kai Guo
 #' @export
 oplsda <- function(X, Y, nc, scale=FALSE, center=TRUE, maxiter = 100, tol = 1E-5){

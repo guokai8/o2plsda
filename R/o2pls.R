@@ -1,4 +1,5 @@
 #' fit O2PLS model with best nc, nx, ny
+#' @importFrom methods new
 #' @param X a Numeric matrix (input)
 #' @param Y a Numeric matrix (input)
 #' @param nc Integer. Number of joint PLS components.
@@ -25,8 +26,8 @@
 #'    \item{R2Y}{Variation of the modeled part in \eqn{Y} (defined by Joint + Orthogonal variation) as proportion of total variation in \eqn{Y}}
 #'    \item{R2Xcorr}{Variation of the joint part in \eqn{X} }
 #'    \item{R2Ycorr}{Variation of the joint part in \eqn{Y} }
-#'    \item{R2Xo}{Variation (measured with \code{\link{ssq}}) of the orthogonal part in \eqn{X} as proportion of variation in \eqn{X}}
-#'    \item{R2Yo}{Variation (measured with \code{\link{ssq}}) of the orthogonal part in \eqn{Y} as proportion of variation in \eqn{Y}}
+#'    \item{R2Xo}{Variation of the orthogonal part in \eqn{X} as proportion of variation in \eqn{X}}
+#'    \item{R2Yo}{Variation of the orthogonal part in \eqn{Y} as proportion of variation in \eqn{Y}}
 #'    \item{R2Xp}{Variation in \eqn{X} joint part predicted by \eqn{Y} Joint part}
 #'    \item{R2Yp}{Variation in \eqn{Y} joint part predicted by \eqn{X} Joint part}
 #'    \item{varXj}{Variation in each Latent Variable (LV) in \eqn{X} Joint part}
@@ -36,6 +37,17 @@
 #'    \item{Exy}{Residuals in \eqn{X}}
 #'    \item{Fxy}{Residuals in \eqn{Y}}
 #'    
+#' @examples 
+#' set.seed(123)
+#' X = matrix(rnorm(5000),50,100)
+#' Y = matrix(rnorm(5000),50,100)
+#' X = scale(X, scale = TRUE)
+#' Y = scale(Y, scale = TRUE)
+#' # group factor could be omitted if you don't have any group 
+#' group <- rep(c("Ctrl","Treat"), each = 25)
+#' cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 5)
+#' fit <- o2pls(X,Y,5,3,3)
+#' summary(fit)
 #' @export
 #' @author Kai Guo
 

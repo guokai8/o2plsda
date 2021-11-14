@@ -5,118 +5,118 @@
 #' @keywords internal 
 #' @useDynLib o2plsda
 eigenmult <- function(A, B) {
-    .Call(`_o2plsda_eigenmult`, A, B)
+    .Call('_o2plsda_eigenmult', PACKAGE = 'o2plsda', A, B)
 }
 
 #' @title three matrix mutiplication
 #' @keywords internal 
 #' @useDynLib o2plsda
 eigenthree <- function(A, B, C) {
-    .Call(`_o2plsda_eigenthree`, A, B, C)
+    .Call('_o2plsda_eigenthree', PACKAGE = 'o2plsda', A, B, C)
 }
 
 #' @title trans matrix * matrix
 #' @keywords internal 
 #' @useDynLib o2plsda
 AtA <- function(A) {
-    .Call(`_o2plsda_AtA`, A)
+    .Call('_o2plsda_AtA', PACKAGE = 'o2plsda', A)
 }
 
 #' @title sort string
 #' @keywords internal 
 #' @useDynLib o2plsda
 sort_str <- function(strings) {
-    .Call(`_o2plsda_sort_str`, strings)
+    .Call('_o2plsda_sort_str', PACKAGE = 'o2plsda', strings)
 }
 
 #' @title sampling a vector
 #' @keywords internal 
 #' @useDynLib o2plsda
 sample_cpp <- function(x, n) {
-    .Call(`_o2plsda_sample_cpp`, x, n)
+    .Call('_o2plsda_sample_cpp', PACKAGE = 'o2plsda', x, n)
 }
 
 #' @title calculate RMSE
 #' @keywords internal 
 #' @useDynLib o2plsda
 rcpp_rmse <- function(y, y_hat) {
-    .Call(`_o2plsda_rcpp_rmse`, y, y_hat)
+    .Call('_o2plsda_rcpp_rmse', PACKAGE = 'o2plsda', y, y_hat)
 }
 
 #' @title order a vector of sting
 #' @keywords internal 
 #' @useDynLib o2plsda
 order_str <- function(x) {
-    .Call(`_o2plsda_order_str`, x)
+    .Call('_o2plsda_order_str', PACKAGE = 'o2plsda', x)
 }
 
 #' @title order a vector
 #' @keywords internal 
 #' @useDynLib o2plsda
 order_cpp <- function(x) {
-    .Call(`_o2plsda_order_cpp`, x)
+    .Call('_o2plsda_order_cpp', PACKAGE = 'o2plsda', x)
 }
 
 #' @title split a vector
 #' @keywords internal 
 #' @useDynLib o2plsda
 split_str <- function(x) {
-    .Call(`_o2plsda_split_str`, x)
+    .Call('_o2plsda_split_str', PACKAGE = 'o2plsda', x)
 }
 
 #' @title unlist a list
 #' @keywords internal 
 #' @useDynLib o2plsda
 unlist_cpp <- function(list) {
-    .Call(`_o2plsda_unlist_cpp`, list)
+    .Call('_o2plsda_unlist_cpp', PACKAGE = 'o2plsda', list)
 }
 
 #' @title lapply sampling
 #' @keywords internal 
 #' @useDynLib o2plsda
 sample_lapply <- function(X, n) {
-    .Call(`_o2plsda_sample_lapply`, X, n)
+    .Call('_o2plsda_sample_lapply', PACKAGE = 'o2plsda', X, n)
 }
 
 #' @title MCCV sampling
 #' @keywords internal 
 #' @useDynLib o2plsda
 getMCCV_cpp <- function(x, n) {
-    .Call(`_o2plsda_getMCCV_cpp`, x, n)
+    .Call('_o2plsda_getMCCV_cpp', PACKAGE = 'o2plsda', x, n)
 }
 
 #' @title sum square of a matrix
 #' @keywords internal 
 #' @useDynLib o2plsda
 s2 <- function(x) {
-    .Call(`_o2plsda_s2`, x)
+    .Call('_o2plsda_s2', PACKAGE = 'o2plsda', x)
 }
 
 #' @title calcualte the Q value
 #' @keywords internal 
 #' @useDynLib o2plsda
 Q <- function(y, y_hat) {
-    .Call(`_o2plsda_Q`, y, y_hat)
+    .Call('_o2plsda_Q', PACKAGE = 'o2plsda', y, y_hat)
 }
 
 #' @title get the sd for a matrix
 #' @keywords internal 
 #' @useDynLib o2plsda
 colsds <- function(X) {
-    .Call(`_o2plsda_colsds`, X)
+    .Call('_o2plsda_colsds', PACKAGE = 'o2plsda', X)
 }
 
 #' @title get the total values for a matrix
 #' @keywords internal 
 #' @useDynLib o2plsda
 column_sums <- function(X) {
-    .Call(`_o2plsda_column_sums`, X)
+    .Call('_o2plsda_column_sums', PACKAGE = 'o2plsda', X)
 }
 
 #' @title orthogonal scores algorithn of partial leat squares (opls) projection
 #' @keywords internal 
 #' @useDynLib o2plsda
 opls <- function(X, Y, ncomp, maxiter, tol) {
-    .Call(`_o2plsda_opls`, X, Y, ncomp, maxiter, tol)
+    .Call('_o2plsda_opls', PACKAGE = 'o2plsda', X, Y, ncomp, maxiter, tol)
 }
 

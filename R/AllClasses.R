@@ -6,7 +6,7 @@
 ##' @slot X a Numeric matrix (input)
 ##' @slot Y a Numeric matrix (input)
 ##' @slot params paramaters ysed in o2pls analysis
-##' @slot result list of o2pls results
+##' @slot results list of o2pls results
 ##' @exportClass O2pls
 ##' @author Kai Guo
 ##' @keywords classes

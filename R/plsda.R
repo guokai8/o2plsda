@@ -1,5 +1,6 @@
 #' @title Partial least squares discriminant analysis
 #' @description Perform a PLS discriminant analysis
+#' @importFrom stats model.matrix cor 
 #' @usage 
 #' plsda(X, Y, nc, scale, center)
 #' @param X a matrix of predictor variables.
@@ -20,6 +21,10 @@
 #'  optimized or specified.}
 #' \item{\code{vip}}{ the VIP matrix.}
 #' \item{\code{xvar}}{ variance explained by each single component}}
+#' @examples 
+#' X <- matrix(rnorm(50),10,5)
+#' Y <- rep(c(0,1),each=5)
+#' fit <- plsda(X,Y,2)
 #' @author Kai Guo
 #' @export
 
