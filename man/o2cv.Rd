@@ -11,7 +11,7 @@ o2cv(
   nx,
   ny,
   group = NULL,
-  nr_folds,
+  nr_folds = 5,
   ncores = 1,
   scale = FALSE,
   center = FALSE
@@ -40,6 +40,16 @@ o2cv(
 }
 \description{
 Cross validation for O2PLS
+}
+\examples{
+set.seed(123)
+X = matrix(rnorm(5000),50,100)
+Y = matrix(rnorm(5000),50,100)
+X = scale(X, scale=TRUE)
+Y = scale(Y, scale=TRUE)
+# group factor could be omitted if you don't have any group 
+group <- rep(c("Ctrl","Treat"),each = 25)
+cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 5)
 }
 \author{
 Kai Guo

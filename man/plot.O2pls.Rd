@@ -13,6 +13,7 @@
   color = NULL,
   top = 20,
   ellipse = TRUE,
+  order = FALSE,
   pt.size = 3,
   label = TRUE,
   label.size = 4,
@@ -38,6 +39,8 @@
 
 \item{ellipse}{TRUE/FALSE}
 
+\item{order}{order by the value or not}
+
 \item{pt.size}{point size}
 
 \item{label}{plot label or not (TRUE/FALSE)}
@@ -46,13 +49,21 @@
 
 \item{repel}{use ggrepel to show the label or not}
 
-\item{order}{order by the value or not}
+\item{rotation}{flip the figure or not (TRUE/FALSE)}
+
+\item{...}{For consistency}
 }
 \value{
 a ggplot2 object
 }
 \description{
 Score or loading plot for the O2PLS results
+}
+\examples{
+X <- matrix(rnorm(50),10,5)
+Y <- matrix(rnorm(50),10,5)
+fit <- o2pls(X,Y,2,1,1)
+plot(fit, type="score")
 }
 \author{
 Kai Guo

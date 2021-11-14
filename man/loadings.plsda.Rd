@@ -2,13 +2,15 @@
 % Please edit documentation in R/AllGenerics.R
 \name{loadings.plsda}
 \alias{loadings.plsda}
-\title{extract the loading value from the O2PLSDA analysis}
+\title{extract the loading value from the PLSDA analysis}
 \usage{
 \method{loadings}{plsda}(x, ...)
 }
 \arguments{
-\item{loading}{}
+\item{x}{Object of class \code{plsda}}
+
+\item{...}{For consistency}
 }
 \description{
-extract the loading value from the O2PLSDA analysis
+extract the loading value from the PLSDA analysis
 }

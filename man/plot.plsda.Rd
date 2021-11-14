@@ -16,7 +16,7 @@
   pt.size = 3,
   label = TRUE,
   label.size = 4,
-  repel = TRUE,
+  repel = FALSE,
   rotation = FALSE,
   ...
 )
@@ -45,12 +45,22 @@
 \item{label.size}{label size}
 
 \item{repel}{use ggrepel to show the label or not}
+
+\item{rotation}{flip the figure or not (TRUE/FALSE)}
+
+\item{...}{For consistency}
 }
 \value{
 a ggplot2 object
 }
 \description{
 Score, VIP or loading plot for the plsda results
+}
+\examples{
+X <- matrix(rnorm(50),10,5)
+yy <- rep(c(0,1),5)
+fit0 <- plsda(X,yy,2)
+plot(fit0, type = "score", group = factor(yy))
 }
 \author{
 Kai Guo

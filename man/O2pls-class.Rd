@@ -18,7 +18,7 @@ This class represents the Annotation information
 
 \item{\code{params}}{paramaters ysed in o2pls analysis}
 
-\item{\code{result}}{list of o2pls results}
+\item{\code{results}}{list of o2pls results}
 }}
 
 \author{

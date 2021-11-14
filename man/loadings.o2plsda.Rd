@@ -7,7 +7,11 @@
 \method{loadings}{o2plsda}(x, loading = "Xloading", ...)
 }
 \arguments{
-\item{loading}{}
+\item{x}{Object of class \code{o2plsda}}
+
+\item{loading}{the loadings for one of "Xjoint", "Yjoint", "Xorth", "Yorth"}
+
+\item{...}{For consistency}
 }
 \description{
 extract the loading value from the O2PLSDA analysis

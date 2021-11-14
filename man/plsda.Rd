@@ -35,6 +35,11 @@ or specified.}
 \description{
 Perform a PLS discriminant analysis
 }
+\examples{
+X <- matrix(rnorm(50),10,5)
+Y <- rep(c(0,1),each=5)
+fit <- plsda(X,Y,2)
+}
 \author{
 Kai Guo
 }

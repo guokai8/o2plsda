@@ -4,13 +4,21 @@
 \alias{print.O2pls}
 \title{Print the summary of O2PLS results.}
 \usage{
-\method{print}{O2pls}(fit, ...)
+\method{print}{O2pls}(x, ...)
 }
 \arguments{
 \item{x}{An O2pls object}
+
+\item{...}{For consistency}
 }
 \description{
 Print the summary of O2PLS results.
+}
+\examples{
+X <- matrix(rnorm(50),10,5)
+Y <- matrix(rnorm(50),10,5)
+object <- o2pls(X,Y,1,1,1)
+print(object)
 }
 \author{
 Kai Guo

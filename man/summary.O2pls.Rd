@@ -2,18 +2,26 @@
 % Please edit documentation in R/misc.R
 \name{summary.O2pls}
 \alias{summary.O2pls}
-\title{Summary of an O2PLS fit}
+\title{Summary of an O2PLS object}
 \usage{
-\method{summary}{O2pls}(fit)
+\method{summary}{O2pls}(object, ...)
 }
 \arguments{
-\item{fit}{a O2pls object}
+\item{object}{a O2pls object}
+
+\item{...}{For consistency}
 }
 \value{
 Detail of O2PLS results
 }
 \description{
-Summary of an O2PLS fit
+Summary of an O2PLS object
+}
+\examples{
+X <- matrix(rnorm(50),10,5)
+Y <- matrix(rnorm(50),10,5)
+object <- o2pls(X,Y,1,1,1)
+summary(object)
 }
 \author{
 Kai Guo
