@@ -46,7 +46,7 @@ $Q^2$ = 1 - $err$ / $Var_{total}$;
 
 $err$ = $Var_{expected}$ - $Var_{estimated}$;   
 
-Here $n$ should be a positive integer, and $n_X$ and $n_Y$ should be non-negative. The `best' integers are then the minimizers of the prediction error.
+Here $nc$ should be a positive integer, and $nx$ and $ny$ should be non-negative. The 'best' integers are then the minimizers of the prediction error.
 
 The O2PLS-DA analysis was performed as described by Bylesjö et al. (2007); briefly, the O2PLS predictive variation [$TW^\top$, $UC^\top$] was used for a subsequent O2PLS-DA analysis. The Variable Importance in the Projection (VIP) value was calculated as a weighted sum of the squared correlations between the OPLS-DA components and the original variable.
 
