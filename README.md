@@ -2,8 +2,22 @@
 # o2plsda [![Project Status:](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![](https://img.shields.io/badge/devel%20version-0.0.7-green.svg)](https://github.com/guokai8/o2plsda)  ![Code Size:](https://img.shields.io/github/languages/code-size/guokai8/o2plsda)![](https://img.shields.io/badge/license-GPL--3-blue.svg)[![DOI](https://zenodo.org/badge/413478714.svg)](https://zenodo.org/badge/latestdoi/413478714)
 
 
-## Description
-_o2plsda_ provides functions to do O2PLS-DA analysis for mutiple omics integration. The package could use the group information (MCCV) when we select the best paramaters with cross-validation. The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" which published by Johan Trygg and Svante Wold at 2003. The package also add PLS-DA function.
+_o2plsda_ provides functions to do O2PLS-DA analysis for mutiple omics integration.The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" which published by Johan Trygg and Svante Wold at 2003. O2PLS is a bidirectional multivariate regression method that aims to separate the covariance between two data sets (it was recently extended to multiple data sets) (Löfstedt and Trygg, 2011; Löfstedt et al., 2012) from the systematic sources of variance being specific for each data set separately. 
+
+### Cross-Validation
+
+In order to avoid overfitting of the model, the optimal number of latent variables for each model structure was estimated using group-balanced MCCV. The package could use the group information when we select the best paramaters with cross-validation. In cross-validation (CV) one minimizes a certain measure of error over some parameters that should be determined a priori. Here, we have three parameters: (nc, nx, ny). A popular measure is the prediction error ||Y - \hat{Y}||, where \hat{Y} is a prediction of $Y. In our case the O2PLS method is symmetric in X and Y, so we minimize the sum of the prediction errors: 
+||X - \hat{X}||+||Y - \hat{Y}||. 
+
+And we also calculate the the average Q^2 values:
+
+Q^2 = 1 - err / Var_{total};    
+
+err = Var_{expected} - Var_{estimated};   
+
+Here nc should be a positive integer, and nx and ny should be non-negative. The best integers are then the minimizers of the prediction error.
+
+The O2PLS-DA analysis was performed as described by Bylesjö et al. (2007); briefly, the O2PLS predictive variation [$TW^\top$, $UC^\top$] was used for a subsequent O2PLS-DA analysis. The Variable Importance in the Projection (VIP) value was calculated as a weighted sum of the squared correlations between the OPLS-DA components and the original variable.
 
 ## Installation
 ```{r,eval=FALSE}
