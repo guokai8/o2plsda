@@ -16,13 +16,13 @@
 #' @param center boolean values determining if data should be centered or not
 #' @examples 
 #' set.seed(123)
-#' X = matrix(rnorm(5000),50,100)
-#' Y = matrix(rnorm(5000),50,100)
-#' X = scale(X, scale=TRUE)
-#' Y = scale(Y, scale=TRUE)
+#' X = matrix(rnorm(500),50,10)
+#' Y = matrix(rnorm(500),50,10)
+#' X = scale(X, scale = TRUE)
+#' Y = scale(Y, scale = TRUE)
 #' # group factor could be omitted if you don't have any group 
-#' group <- rep(c("Ctrl","Treat"),each = 25)
-#' cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 5)
+#' group <- rep(c("Ctrl","Treat"), each = 25)
+#' cv <- o2cv(X, Y, 1:2, 1:2, 1:2, group=group, nr_folds = 2, ncores=1)
 #' @author Kai Guo
 #' @export
 #' 
