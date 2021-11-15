@@ -57,14 +57,11 @@ fit O2PLS model with best nc, nx, ny
 }
 \examples{
 set.seed(123)
-X = matrix(rnorm(5000),50,100)
-Y = matrix(rnorm(5000),50,100)
+X = matrix(rnorm(500),50,10)
+Y = matrix(rnorm(500),50,10)
 X = scale(X, scale = TRUE)
 Y = scale(Y, scale = TRUE)
-# group factor could be omitted if you don't have any group 
-group <- rep(c("Ctrl","Treat"), each = 25)
-cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 5)
-fit <- o2pls(X,Y,5,3,3)
+fit <- o2pls(X, Y, 1, 2, 2)
 summary(fit)
 }
 \author{
