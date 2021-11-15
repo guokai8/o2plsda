@@ -6,7 +6,7 @@ _o2plsda_ provides functions to do O2PLS-DA analysis for mutiple omics integrati
 
 ### Cross-Validation
 
-In order to avoid overfitting of the model, the optimal number of latent variables for each model structure was estimated using group-balanced MCCV. The package could use the group information when we select the best paramaters with cross-validation. In cross-validation (CV) one minimizes a certain measure of error over some parameters that should be determined a priori. Here, we have three parameters: (nc, nx, ny). A popular measure is the prediction error ||Y - \hat{Y}||, where \hat{Y} is a prediction of $Y. In our case the O2PLS method is symmetric in X and Y, so we minimize the sum of the prediction errors: 
+In order to avoid overfitting of the model, the optimal number of latent variables for each model structure was estimated using group-balanced MCCV. The package could use the group information when we select the best paramaters with cross-validation. In cross-validation (CV) one minimizes a certain measure of error over some parameters that should be determined a priori. Here, we have three parameters: (nc, nx, ny). A popular measure is the prediction error ||Y - \hat{Y}||, where \hat{Y} is a prediction of Y. In our case the O2PLS method is symmetric in X and Y, so we minimize the sum of the prediction errors: 
 ||X - \hat{X}||+||Y - \hat{Y}||. 
 
 And we also calculate the the average Q^2 values:
