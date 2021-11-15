@@ -1,13 +1,13 @@
 Package: o2plsda
 Type: Package
-Title: Omics Data Integration with o2plsda
-Version: 0.0.7
-Date: 2021-10-02
+Title: Multiomics Data Integration with O2plsda
+Version: 0.0.9
+Date: 2021-11-15
 Author: Kai Guo [aut, cre]
 Maintainer: Kai Guo <guokai8@gmail.com>
-Description: Integrate Mutiple Omics Data and Do Discriminant Analysis. Generate the Figures Based on the Results.
+Description: Integrate multiomics data and do Discriminant Analysis. Generate the figures based on the results.
 License: GPL-3
-Imports: Rcpp (>= 1.0.7), RcppArmadillo, RcppEigen, dplyr, magrittr, parallel, ggplot2, ggrepel, methods, stats
+Imports: Rcpp (>= 1.0.7), dplyr, magrittr, parallel, ggplot2, ggrepel, methods, stats
 Depends:
 Encoding: UTF-8
 LazyData: true
