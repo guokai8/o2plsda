@@ -81,6 +81,11 @@ plsda <- function(X,Y,nc,scale=TRUE, center=TRUE){
 
 #' @title Partial least squares discriminant analysis
 #' @description Perform a PLS discriminant analysis
+#' @param X a matrix of predictor variables.
+#' @param Y a single vector indicate the group
+#' @param nc the number of pls components (the one joint components + 
+#'  number of orthogonal components ).
+#'  @return list with PLS results
 #' @keywords internal
 .pls <- function(X,Y,nc){
     n = nrow(X)

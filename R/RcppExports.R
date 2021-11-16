@@ -4,6 +4,7 @@
 #' @title two matrix mutiplication
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return A matrix
 eigenmult <- function(A, B) {
     .Call('_o2plsda_eigenmult', PACKAGE = 'o2plsda', A, B)
 }
@@ -11,6 +12,7 @@ eigenmult <- function(A, B) {
 #' @title three matrix mutiplication
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return A matrix
 eigenthree <- function(A, B, C) {
     .Call('_o2plsda_eigenthree', PACKAGE = 'o2plsda', A, B, C)
 }
@@ -18,6 +20,7 @@ eigenthree <- function(A, B, C) {
 #' @title trans matrix * matrix
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return A matrix
 AtA <- function(A) {
     .Call('_o2plsda_AtA', PACKAGE = 'o2plsda', A)
 }
@@ -25,6 +28,7 @@ AtA <- function(A) {
 #' @title sort string
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return A vector of string
 sort_str <- function(strings) {
     .Call('_o2plsda_sort_str', PACKAGE = 'o2plsda', strings)
 }
@@ -32,6 +36,7 @@ sort_str <- function(strings) {
 #' @title sampling a vector
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return a vector of length ‘size’ with element drawn from ‘x’
 sample_cpp <- function(x, n) {
     .Call('_o2plsda_sample_cpp', PACKAGE = 'o2plsda', x, n)
 }
@@ -39,6 +44,7 @@ sample_cpp <- function(x, n) {
 #' @title calculate RMSE
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return root-mean-square error value
 rcpp_rmse <- function(y, y_hat) {
     .Call('_o2plsda_rcpp_rmse', PACKAGE = 'o2plsda', y, y_hat)
 }
@@ -46,6 +52,7 @@ rcpp_rmse <- function(y, y_hat) {
 #' @title order a vector of sting
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return An character vector 
 order_str <- function(x) {
     .Call('_o2plsda_order_str', PACKAGE = 'o2plsda', x)
 }
@@ -53,6 +60,7 @@ order_str <- function(x) {
 #' @title order a vector
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return a integer vector
 order_cpp <- function(x) {
     .Call('_o2plsda_order_cpp', PACKAGE = 'o2plsda', x)
 }
@@ -60,6 +68,7 @@ order_cpp <- function(x) {
 #' @title split a vector
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return a list of vectors containing the values for the groups
 split_str <- function(x) {
     .Call('_o2plsda_split_str', PACKAGE = 'o2plsda', x)
 }
@@ -67,6 +76,7 @@ split_str <- function(x) {
 #' @title unlist a list
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return a vector of an appropriate mode to hold the list components.
 unlist_cpp <- function(list) {
     .Call('_o2plsda_unlist_cpp', PACKAGE = 'o2plsda', list)
 }
@@ -74,6 +84,7 @@ unlist_cpp <- function(list) {
 #' @title lapply sampling
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return a list
 sample_lapply <- function(X, n) {
     .Call('_o2plsda_sample_lapply', PACKAGE = 'o2plsda', X, n)
 }
@@ -81,6 +92,7 @@ sample_lapply <- function(X, n) {
 #' @title MCCV sampling
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return a vector with random sampling based on group-balanced Monte Carlo cross-validation
 getMCCV_cpp <- function(x, n) {
     .Call('_o2plsda_getMCCV_cpp', PACKAGE = 'o2plsda', x, n)
 }
@@ -88,6 +100,7 @@ getMCCV_cpp <- function(x, n) {
 #' @title sum square of a matrix
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return sum square value of the vector
 s2 <- function(x) {
     .Call('_o2plsda_s2', PACKAGE = 'o2plsda', x)
 }
@@ -95,6 +108,7 @@ s2 <- function(x) {
 #' @title calcualte the Q value
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return a numeric
 Q <- function(y, y_hat) {
     .Call('_o2plsda_Q', PACKAGE = 'o2plsda', y, y_hat)
 }
@@ -102,6 +116,7 @@ Q <- function(y, y_hat) {
 #' @title get the sd for a matrix
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return standard deviation of the matrix 
 colsds <- function(X) {
     .Call('_o2plsda_colsds', PACKAGE = 'o2plsda', X)
 }
@@ -109,6 +124,7 @@ colsds <- function(X) {
 #' @title get the total values for a matrix
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return sum value of the column
 column_sums <- function(X) {
     .Call('_o2plsda_column_sums', PACKAGE = 'o2plsda', X)
 }
@@ -116,6 +132,7 @@ column_sums <- function(X) {
 #' @title orthogonal scores algorithn of partial leat squares (opls) projection
 #' @keywords internal 
 #' @useDynLib o2plsda
+#' @return a list of opls result
 opls <- function(X, Y, ncomp, maxiter, tol) {
     .Call('_o2plsda_opls', PACKAGE = 'o2plsda', X, Y, ncomp, maxiter, tol)
 }

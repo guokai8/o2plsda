@@ -24,6 +24,7 @@
 #' group <- rep(c("Ctrl","Treat"), each = 25)
 #' cv <- o2cv(X, Y, 1:2, 1:2, 1:2, group=group, nr_folds = 2, ncores=1)
 #' @author Kai Guo
+#' @return a data frame with the Q and RMSE values
 #' @export
 #' 
 o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
@@ -49,7 +50,7 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
     if(is.null(group)){
         group <- rep(1,nrow(X))
     }else{
-        if(length(group)!=nrow(X)) stop("The group should have same length of sample")
+        if(length(group)!=nrow(X)) stop("The group should have same length of sample\n")
     }
     params <- data.frame(t(expand.grid(nc,nx,ny)))
     colnames(params)<-NULL
@@ -78,11 +79,11 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
     ny <- as.data.frame(results)[1,3]
     Qxy <- as.data.frame(results)[1,11]
     RMSE <- as.data.frame(results)[1,10]
-    cat("#####################################\n")
-    cat("The best paramaters are nc = ",nc,", nx = ",nx,", ny = ",ny,"\n")
-    cat("#####################################\n")
-    cat("The Qxy is ",Qxy, " and the RMSE is: ", RMSE,"\n")
-    cat("#####################################\n")
+    message("#####################################")
+    message("The best paramaters are nc = ",nc,", nx = ",nx,", ny = ",ny)
+    message("#####################################")
+    message("The Qxy is ",Qxy, " and the RMSE is: ", RMSE)
+    message("#####################################")
     return(results)
 }
 
@@ -95,6 +96,7 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
 #' @param ny Integer. Number of orthogonal components in Y 
 #' @param group a vector to indicate the group for Y
 #' @param nr Integer to indicate the folds for cross validation
+#' @return a list of o2pls results
 #' @keywords internal
 #' @author Kai Guo
 
