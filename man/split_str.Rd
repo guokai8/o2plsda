@@ -6,6 +6,9 @@
 \usage{
 split_str(x)
 }
+\value{
+a list of vectors containing the values for the groups
+}
 \description{
 split a vector
 }

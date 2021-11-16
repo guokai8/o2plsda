@@ -6,6 +6,9 @@
 \usage{
 unlist_cpp(list)
 }
+\value{
+a vector of an appropriate mode to hold the list components.
+}
 \description{
 unlist a list
 }

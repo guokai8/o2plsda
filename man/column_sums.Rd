@@ -6,6 +6,9 @@
 \usage{
 column_sums(X)
 }
+\value{
+sum value of the column
+}
 \description{
 get the total values for a matrix
 }

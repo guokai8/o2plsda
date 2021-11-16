@@ -6,6 +6,9 @@
 \usage{
 sample_cpp(x, n)
 }
+\value{
+a vector of length ‘size’ with element drawn from ‘x’
+}
 \description{
 sampling a vector
 }

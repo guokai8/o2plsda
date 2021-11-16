@@ -6,6 +6,9 @@
 \usage{
 order_str(x)
 }
+\value{
+An character vector
+}
 \description{
 order a vector of sting
 }

@@ -6,6 +6,9 @@
 \usage{
 AtA(A)
 }
+\value{
+A matrix
+}
 \description{
 trans matrix * matrix
 }

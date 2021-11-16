@@ -6,6 +6,15 @@
 \usage{
 .pls(X, Y, nc)
 }
+\arguments{
+\item{X}{a matrix of predictor variables.}
+
+\item{Y}{a single vector indicate the group}
+
+\item{nc}{the number of pls components (the one joint components + 
+number of orthogonal components ).
+@return list with PLS results}
+}
 \description{
 Perform a PLS discriminant analysis
 }

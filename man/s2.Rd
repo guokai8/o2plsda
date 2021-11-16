@@ -6,6 +6,9 @@
 \usage{
 s2(x)
 }
+\value{
+sum square value of the vector
+}
 \description{
 sum square of a matrix
 }

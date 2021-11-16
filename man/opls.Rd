@@ -6,6 +6,9 @@
 \usage{
 opls(X, Y, ncomp, maxiter, tol)
 }
+\value{
+a list of opls result
+}
 \description{
 orthogonal scores algorithn of partial leat squares (opls) projection
 }

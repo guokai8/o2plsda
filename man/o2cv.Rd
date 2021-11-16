@@ -38,6 +38,9 @@ o2cv(
 
 \item{center}{boolean values determining if data should be centered or not}
 }
+\value{
+a data frame with the Q and RMSE values
+}
 \description{
 Cross validation for O2PLS
 }

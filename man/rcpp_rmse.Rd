@@ -6,6 +6,9 @@
 \usage{
 rcpp_rmse(y, y_hat)
 }
+\value{
+root-mean-square error value
+}
 \description{
 calculate RMSE
 }

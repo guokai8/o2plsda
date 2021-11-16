@@ -6,6 +6,9 @@
 \usage{
 sort_str(strings)
 }
+\value{
+A vector of string
+}
 \description{
 sort string
 }

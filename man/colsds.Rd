@@ -6,6 +6,9 @@
 \usage{
 colsds(X)
 }
+\value{
+standard deviation of the matrix
+}
 \description{
 get the sd for a matrix
 }

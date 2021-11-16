@@ -6,6 +6,9 @@
 \usage{
 eigenthree(A, B, C)
 }
+\value{
+A matrix
+}
 \description{
 three matrix mutiplication
 }

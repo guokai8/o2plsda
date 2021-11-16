@@ -6,6 +6,9 @@
 \usage{
 sample_lapply(X, n)
 }
+\value{
+a list
+}
 \description{
 lapply sampling
 }

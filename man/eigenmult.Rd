@@ -6,6 +6,9 @@
 \usage{
 eigenmult(A, B)
 }
+\value{
+A matrix
+}
 \description{
 two matrix mutiplication
 }

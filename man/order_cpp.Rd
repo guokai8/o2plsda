@@ -6,6 +6,9 @@
 \usage{
 order_cpp(x)
 }
+\value{
+a integer vector
+}
 \description{
 order a vector
 }

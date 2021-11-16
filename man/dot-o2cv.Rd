@@ -21,6 +21,9 @@
 
 \item{nr}{Integer to indicate the folds for cross validation}
 }
+\value{
+a list of o2pls results
+}
 \description{
 do cross-validation with group factors
 }

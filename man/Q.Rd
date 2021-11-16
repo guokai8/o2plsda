@@ -6,6 +6,9 @@
 \usage{
 Q(y, y_hat)
 }
+\value{
+a numeric
+}
 \description{
 calcualte the Q value
 }

@@ -6,6 +6,9 @@
 \usage{
 getMCCV_cpp(x, n)
 }
+\value{
+a vector with random sampling based on group-balanced Monte Carlo cross-validation
+}
 \description{
 MCCV sampling
 }
