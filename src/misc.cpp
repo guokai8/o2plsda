@@ -11,6 +11,7 @@ using namespace Rcpp;
 //' @title two matrix mutiplication
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return A matrix
 // [[Rcpp::export]]
 SEXP eigenmult(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B){
     Eigen::MatrixXd C = A * B;
@@ -20,6 +21,7 @@ SEXP eigenmult(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B){
 //' @title three matrix mutiplication
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return A matrix
 // [[Rcpp::export]]
 SEXP eigenthree(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B, Eigen::Map<Eigen::MatrixXd> C){
     Eigen::MatrixXd D = A * B * C;
@@ -30,6 +32,7 @@ SEXP eigenthree(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B, Ei
 //' @title trans matrix * matrix
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return A matrix
 // [[Rcpp::export]]
 Eigen::MatrixXd AtA(const Eigen::Map<Eigen::MatrixXd>& A) {
     int n(A.cols());
@@ -40,6 +43,7 @@ Eigen::MatrixXd AtA(const Eigen::Map<Eigen::MatrixXd>& A) {
 //' @title sort string
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return A vector of string
 // [[Rcpp::export]]
 CharacterVector sort_str( std::vector< std::string > strings ) {
     
@@ -50,6 +54,7 @@ CharacterVector sort_str( std::vector< std::string > strings ) {
 //' @title sampling a vector
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return a vector of length ‘size’ with element drawn from ‘x’
 // [[Rcpp::export]]
 IntegerVector sample_cpp(IntegerVector x, int n) {
     return sample(x, n, false); 
@@ -58,6 +63,7 @@ IntegerVector sample_cpp(IntegerVector x, int n) {
 //' @title calculate RMSE
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return root-mean-square error value
 // [[Rcpp::export]]
 double rcpp_rmse(Rcpp::NumericVector& y, Rcpp::NumericVector& y_hat) {
     Rcpp::NumericVector diff = y - y_hat;
@@ -67,6 +73,7 @@ double rcpp_rmse(Rcpp::NumericVector& y, Rcpp::NumericVector& y_hat) {
 //' @title order a vector of sting
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return An character vector 
 // [[Rcpp::export]]
 IntegerVector order_str(CharacterVector& x) {
     // Order the elements of x by sorting y
@@ -80,6 +87,7 @@ IntegerVector order_str(CharacterVector& x) {
 //' @title order a vector
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return a integer vector
 // [[Rcpp::export]]
 IntegerVector order_cpp(IntegerVector& x) {
     // Order the elements of x by sorting y
@@ -94,6 +102,7 @@ IntegerVector order_cpp(IntegerVector& x) {
 //' @title split a vector
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return a list of vectors containing the values for the groups
 // [[Rcpp::export]]
 List split_str(CharacterVector x){
     Function sp("split");
@@ -104,6 +113,7 @@ List split_str(CharacterVector x){
 //' @title unlist a list
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return a vector of an appropriate mode to hold the list components.
 // [[Rcpp::export]]
 SEXP unlist_cpp(const List& list)
 {
@@ -136,6 +146,7 @@ SEXP unlist_cpp(const List& list)
 //' @title lapply sampling
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return a list
 // [[Rcpp::export]]
 List sample_lapply(List X, int n){
     int lenx = X.size();
@@ -155,6 +166,7 @@ List sample_lapply(List X, int n){
 //' @title MCCV sampling
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return a vector with random sampling based on group-balanced Monte Carlo cross-validation
 // [[Rcpp::export]]
 IntegerVector getMCCV_cpp(CharacterVector x,int n){
     IntegerVector o = order_str(x);
@@ -172,6 +184,7 @@ IntegerVector getMCCV_cpp(CharacterVector x,int n){
 //' @title sum square of a matrix
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return sum square value of the vector
 // [[Rcpp::export]]
 double s2(arma::mat x){
     return(arma::accu(pow(x,2)));
@@ -180,6 +193,7 @@ double s2(arma::mat x){
 //' @title calcualte the Q value
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return a numeric
 // [[Rcpp::export]]
 double Q(arma::mat y, arma::mat y_hat) {
     arma::mat diff = y - y_hat;

@@ -11,6 +11,7 @@ using namespace arma;
 //' @title get the sd for a matrix
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return standard deviation of the matrix 
 // [[Rcpp::export]]
 NumericVector colsds(arma::mat &X){
     arma::mat sd = arma::stddev(X, 0, 0);
@@ -20,6 +21,7 @@ NumericVector colsds(arma::mat &X){
 //' @title get the total values for a matrix
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return sum value of the column
 // [[Rcpp::export]]
 NumericVector column_sums(arma::mat X){
     arma::mat cols = arma::sum(X);
@@ -32,6 +34,7 @@ NumericVector column_sums(arma::mat X){
 //' @title orthogonal scores algorithn of partial leat squares (opls) projection
 //' @keywords internal 
 //' @useDynLib o2plsda
+//' @return a list of opls result
 // [[Rcpp::export]]
 List opls(arma::mat &X, 
             arma::mat &Y, 
