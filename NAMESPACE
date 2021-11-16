@@ -52,3 +52,4 @@ importFrom(parallel,stopCluster)
 importFrom(stats,cor)
 importFrom(stats,model.matrix)
 importFrom(stats,reorder)
+
