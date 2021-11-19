@@ -80,7 +80,7 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
     Qxy <- as.data.frame(results)[1,11]
     RMSE <- as.data.frame(results)[1,10]
     message("#####################################")
-    message("The best paramaters are nc = ",nc,", nx = ",nx,", ny = ",ny)
+    message("The best parameters are nc = ",nc,", nx = ",nx,", ny = ",ny)
     message("#####################################")
     message("The Qxy is ",Qxy, " and the RMSE is: ", RMSE)
     message("#####################################")
