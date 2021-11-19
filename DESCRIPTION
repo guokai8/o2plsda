@@ -1,15 +1,15 @@
 Package: o2plsda
 Type: Package
-Title: 'Multiomics' Data Integration with 'o2plsda'
-Version: 0.0.11
+Title: Multiomics Data Integration 
+Version: 0.0.12
 Date: 2021-11-15
 Author: Kai Guo [aut, cre]
 Maintainer: Kai Guo <guokai8@gmail.com>
-Description: 'o2plsda' provides functions to do 'O2PLS-DA' analysis for mutiple omics integration.
+Description: Provides functions to do 'O2PLS-DA' analysis for multiple omics data integration.
             The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" 
-            which published by Johan Trygg and Svante Wold at 2003<doi:10.1002/cem.775>. 
+            which published by Johan Trygg and Svante Wold at 2003 <doi:10.1002/cem.775>. 
             'O2PLS' is a bidirectional multivariate regression method that aims to separate the covariance between
-            two data sets (it was recently extended to multiple data sets) (Löfstedt and Trygg, 2011<doi:10.1002/cem.1388>; Löfstedt et al., 2012<doi:10.1016/j.aca.2013.06.026>) 
+            two data sets (it was recently extended to multiple data sets) (Löfstedt and Trygg, 2011 <doi:10.1002/cem.1388>; Löfstedt et al., 2012 <doi:10.1016/j.aca.2013.06.026>) 
             from the systematic sources of variance being specific for each data set separately. 
 License: GPL-3
 Imports: Rcpp (>= 1.0.7), dplyr, magrittr, parallel, ggplot2, ggrepel, methods, stats
