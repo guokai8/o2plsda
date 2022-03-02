@@ -73,7 +73,7 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
     results <- as.data.frame(t(sapply(res, function(x)unlist(x))))
     results <- results%>%group_by(nc,nx,ny)%>%
         summarise(Qx=mean(Qx),Qy=mean(Qy),Px=mean(Px),Py=mean(Py),Rx=mean(Rx),Ry=mean(Ry))%>%
-        mutate(RMSE=Rx+Ry,Qxy=sqrt(Qx^2+Qy^2))%>%arrange(desc(Qxy))%>%filter(Qx>0|Qy>0)
+        mutate(RMSE=Rx+Ry,Qxy=sqrt(Qx^2+Qy^2))%>%arrange(desc(Qxy))%>%filter(Qx>0|Qy>0) ##### Qx and Qy should larger than 0
     nc <- as.data.frame(results)[1,1]
     nx <- as.data.frame(results)[1,2]
     ny <- as.data.frame(results)[1,3]
