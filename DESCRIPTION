@@ -1,7 +1,7 @@
 Package: o2plsda
 Type: Package
 Title: Multiomics Data Integration 
-Version: 0.0.12
+Version: 0.0.13
 Date: 2021-11-15
 Author: Kai Guo [aut, cre]
 Maintainer: Kai Guo <guokai8@gmail.com>
