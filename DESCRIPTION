@@ -3,7 +3,12 @@ Type: Package
 Title: Multiomics Data Integration 
 Version: 0.0.13
 Date: 2021-11-15
-Author: Kai Guo [aut, cre]
+Authors@R: c(person("Kai","Guo",email = "guokai8@gmail.com",
+           role = c("aut", "cre")
+          ),
+          person("Junguk","Hur",role = "aut"),
+          person("Eva","Feldman",role = "aut")
+          )
 Maintainer: Kai Guo <guokai8@gmail.com>
 Description: Provides functions to do 'O2PLS-DA' analysis for multiple omics data integration.
             The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" 
