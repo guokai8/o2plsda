@@ -18,13 +18,27 @@ summary.O2pls <- function(object, ...){
     res <- object@results
     d <-data.frame(X=c(res$R2Xcorr,res$R2Xo,1-res$R2X),Y=c(res$R2Ycorr,res$R2Yo,1-res$R2Y))
     varj <- as.data.frame(rbind(res$varXj,res$varYj))
+    nc <- object@params$nc
+    nx <- object@params$nx
+    ny <- object@params$ny
     colnames(varj) <- paste0("LV",1:object@params$nc)
     rownames(varj) <- c("X","Y")
     varx <- rbind(res$varXorth)
-    colnames(varx) <- paste0("LV",1:object@params$nx)
+    ###if nx =0 or ny =0
+    if(nx==0){
+        nnx=nc
+    }else{
+        nnx=nx
+    }
+    if(ny==0){
+        nny=nc
+    }else{
+        nny=ny
+    }
+    colnames(varx) <- paste0("LV",1:nnx)
     rownames(varx) <- "X"
     vary <- rbind(res$varYorth)
-    colnames(vary) <- paste0("LV",1:object@params$ny)
+    colnames(vary) <- paste0("LV",1:nny)
     rownames(vary) <- "Y"
     rownames(d) <- c("Joint","Orthogonal","Noise")
     cat("### Total variation \n")
