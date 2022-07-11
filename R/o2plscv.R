@@ -73,7 +73,7 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
     results <- as.data.frame(t(sapply(res, function(x)unlist(x))))
     results <- results%>%group_by(nc,nx,ny)%>%
         summarise(Qx=mean(Qx),Qy=mean(Qy),Px=mean(Px),Py=mean(Py),Rx=mean(Rx),Ry=mean(Ry))%>%
-        mutate(RMSE=Rx+Ry,Qxy=sqrt(Qx^2+Qy^2))%>%arrange(desc(Qxy))%>%filter(Qx>=0,Qy>=0) ##### Qx and Qy should larger than 0
+        mutate(RMSE=Rx+Ry,Qxy=sqrt(Qx^2+Qy^2))%>%arrange(desc(Qxy))%>%filter(Qx>=0,Qy>=0)
     nc <- as.data.frame(results)[1,1]
     nx <- as.data.frame(results)[1,2]
     ny <- as.data.frame(results)[1,3]
@@ -112,18 +112,18 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
         o2 <- o2@results
         #subset testing data
         Xev <- X[cls.grp == k & is.na(cls.grp)==FALSE,]
-        To <- matrix(0,nrow(Xev),nx)
+       
         
         # Predicts y_hat
-        if(nx >0){
+        if(nx>0){
+            To <- matrix(0,nrow(Xev),nx)
         for (i in 1:nx) {
             #tx <- Xev %*% o2$WYosc[ , i,drop=F]
             tx <- eigenmult(Xev, o2$WYosc[ , i,drop=F])
           #  Xev <- Xev - tx %*% t(o2$PYosc[ , i,drop=F])
             Xev <- Xev - eigenmult(tx, t(o2$PYosc[ , i,drop=F]))
             To[,i]<- tx
-        }
-        }
+        }}
       #  Tpp <- Xev %*% o2$Xloading
       #  Y_hat <- Tpp %*% o2$BT %*% t(o2$Yloading)
         Tpp <- eigenmult(Xev, o2$Xloading)
@@ -131,8 +131,9 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
         
         # Predicts x_hat
         Yev <- Y[cls.grp == k & is.na(cls.grp)==FALSE,]
-        Uo <- matrix(0,nrow(Yev),ny)
-        if(ny > 0){
+        
+        if(ny>0){
+            Uo <- matrix(0,nrow(Yev),ny)
         for (i in 1:ny) {
           #  ux <-  Yev %*% o2$CXosc[ , i,drop=F]
             ux <-  eigenmult(Yev, o2$CXosc[ , i,drop=F])
