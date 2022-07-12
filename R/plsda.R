@@ -28,8 +28,8 @@
 #' \item{code{Q2}}{quality of  cross-validation}}
 #' @examples 
 #' X <- matrix(rnorm(50),10,5)
-#' Y <- rep(c(0,1),each=5)
-#' fit <- plsda(X,Y,2)
+#' Y <- rep(c("a","b"),each=5)
+#' fit <- plsda(X,Y,nc=2,cv=FALSE)
 #' @author Kai Guo
 #' @export
 
