@@ -35,6 +35,7 @@
 
 plsda <- function(X,Y,nc,scale=TRUE, center=TRUE, cv = TRUE, nr_folds = 5){
     X <- as.matrix(X)
+    Y <- as.character(Y)
     Y <- model.matrix(~ -1 + Y)
     if(nrow(X)!=nrow(Y)) stop("Y should have same length as number of X rows")
     if(isTRUE(scale)){
