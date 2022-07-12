@@ -26,7 +26,7 @@ An object containing
    \item{Xscore}{Joint \eqn{X} scores}
    \item{Xloading}{Joint \eqn{X} loadings}
    \item{Yscore}{Joint \eqn{Y} scores}
-   \item{Yloaing}{Joint \eqn{Y} loadings}
+   \item{Yloading}{Joint \eqn{Y} loadings}
    \item{TYosc}{Orthogonal \eqn{X} scores}
    \item{PYosc}{Orthogonal \eqn{X} loadings}
    \item{WYosc}{Orthogonal \eqn{X} weights}
