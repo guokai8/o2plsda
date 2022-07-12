@@ -17,6 +17,10 @@ number of orthogonal components ).}
 \item{scale}{logical indicating whether \code{X} must be scaled (suggest TRUE).}
 
 \item{center}{logical indicating whether \code{X} must be centered (suggest TRUE).}
+
+\item{cv}{logical indicating whether cross-validation will be performed or not (suggest TRUE).}
+
+\item{nr_folds}{nr_folds Integer to indicate the folds for cross validation.}
 }
 \value{
 a list containing the following elements:
@@ -30,7 +34,10 @@ or specified.}
  explanatory variables. The components retrieved correspond to the ones
  optimized or specified.}
 \item{\code{vip}}{ the VIP matrix.}
-\item{\code{xvar}}{ variance explained by each single component}}
+\item{\code{xvar}}{ variance explained of X by each single component.}
+\item{\code{R2Y}}{ variance explained of Y by each single component.}
+\item{code{PRESS}}{The residual sum of squares for the samples which were not used to fit the model}
+\item{code{Q2}}{quality of  cross-validation}}
 }
 \description{
 Perform a PLS discriminant analysis

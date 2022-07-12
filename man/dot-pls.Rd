@@ -4,15 +4,18 @@
 \alias{.pls}
 \title{Partial least squares discriminant analysis}
 \usage{
-.pls(X, Y, nc)
+.pls(X, Y, nc, cv = TRUE, nr_folds = 5)
 }
 \arguments{
 \item{X}{a matrix of predictor variables.}
 
 \item{Y}{a single vector indicate the group}
 
-\item{nc}{the number of pls components (the one joint components + 
-number of orthogonal components ).
+\item{nc}{the number of pls components .}
+
+\item{cv}{logical indicating whether cross-validation will be performed or not (suggest TRUE).}
+
+\item{nr_folds}{nr_folds Integer to indicate the folds for cross validation.
 @return list with PLS results}
 }
 \description{
