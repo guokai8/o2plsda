@@ -180,17 +180,14 @@ plsda <- function(X,Y,nc,scale=TRUE, center=TRUE, cv = TRUE, nr_folds = 5){
     }
     ## modified from the mixOmics package
     if(isTRUE(cv)){
-        ns = max(Q2G >= 0.05)
-        if(ns>=nc){
-            ns <- nc
-        }else{
-            if(ns < 2){
+        ns = max(which(Q2G >= 0.05))
+        if(ns < nc){
+            nc <- ns
+            if(nc < 2){
                 nc <- 2
-            }else{
-                nc <- ns   
             }
-            W = W[,1:nc]
-            U = U[,1:nc]
+            W = W[,1:nc, drop=FALSE]
+            U = U[,1:nc, drop=FALSE]
             Ph = Ph[,1:nc,drop=FALSE]
             Tt = Tt[,1:nc,drop=FALSE]
             Ch = Ch[,1:nc,drop=FALSE]
