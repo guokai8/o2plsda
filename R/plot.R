@@ -317,10 +317,10 @@ plot.o2plsda <- function(x,type = "score", var = "Xjoint",group = NULL,
 #' @param rotation flip the figure or not (TRUE/FALSE)
 #' @param ... For consistency 
 #' @examples 
-#' X <- matrix(rnorm(50),10,5)
-#' yy <- rep(c(0,1),5)
-#' fit0 <- plsda(X,yy,2)
-#' plot(fit0, type = "score", group = factor(yy))
+#' X <- matrix(rnorm(500),10,50)
+#' Y <- rep(c("a","b"),each=5)
+#' fit0 <- plsda(X,Y,2)
+#' plot(fit0, type = "score", group = factor(Y))
 #' @return a ggplot2 object
 #' @export
 #' @author Kai Guo
