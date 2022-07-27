@@ -2,7 +2,7 @@
 #' @description Perform a PLS discriminant analysis
 #' @importFrom stats model.matrix cor 
 #' @usage 
-#' plsda(X, Y, nc, scale, center)
+#' plsda(X, Y, nc, scale = TRUE, center = TRUE, cv = TRUE, nr_folds = 5)
 #' @param X a matrix of predictor variables.
 #' @param Y a single vector indicate the group
 #' @param nc the number of pls components (the one joint components + 
@@ -27,15 +27,14 @@
 #' \item{code{PRESS}}{The residual sum of squares for the samples which were not used to fit the model}
 #' \item{code{Q2}}{quality of  cross-validation}}
 #' @examples 
-#' X <- matrix(rnorm(50),10,5)
+#' X <- matrix(rnorm(500),10,50)
 #' Y <- rep(c("a","b"),each=5)
-#' fit <- plsda(X,Y,nc=2,cv=FALSE)
+#' fit <- plsda(X,Y,2)
 #' @author Kai Guo
 #' @export
 
 plsda <- function(X,Y,nc,scale=TRUE, center=TRUE, cv = TRUE, nr_folds = 5){
     X <- as.matrix(X)
-    Y <- as.character(Y)
     Y <- model.matrix(~ -1 + Y)
     if(nrow(X)!=nrow(Y)) stop("Y should have same length as number of X rows")
     if(isTRUE(scale)){
