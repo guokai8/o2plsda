@@ -24,4 +24,5 @@ LazyData: true
 Suggests: knitr, markdown, rmarkdown
 VignetteBuilder: knitr
 LinkingTo: Rcpp, RcppArmadillo, RcppEigen
+URL: https://github.com/guokai8/o2plsda
 RoxygenNote: 7.1.1
