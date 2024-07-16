@@ -143,6 +143,7 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
             PXosc[,i] <- p_xo
             CXosc[,i] <- cosc	
           #  Yscore <- Y%*%Yloading
+            CDW <- eigenmult(t(Y), X)
             cdw <- svd(CDW, nu = nc, nv = nc)
             Yloading <- cdw$u
             Yscore <- eigenmult(Y, Yloading)
