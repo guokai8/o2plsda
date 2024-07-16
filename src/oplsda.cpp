@@ -2,7 +2,6 @@
 #include <math.h>
 #include <iostream>
 #include <Rcpp.h>
-
 // [[Rcpp::depends(RcppArmadillo)]]
 
 using namespace Rcpp;
@@ -16,6 +15,24 @@ using namespace arma;
 NumericVector colsds(arma::mat &X){
     arma::mat sd = arma::stddev(X, 0, 0);
     return Rcpp::wrap(sd);
+}
+//' @title sum square of a matrix
+//' @keywords internal 
+//' @useDynLib o2plsda
+//' @return sum square value of the vector
+// [[Rcpp::export]]
+double s2(arma::mat x){
+    return(arma::accu(pow(x,2)));
+}
+
+//' @title calcualte the Q value
+//' @keywords internal 
+//' @useDynLib o2plsda
+//' @return a numeric
+// [[Rcpp::export]]
+double Q(arma::mat y, arma::mat y_hat) {
+    arma::mat diff = y - y_hat;
+    return(1-s2(diff)/s2(y));
 }
 
 //' @title get the total values for a matrix
