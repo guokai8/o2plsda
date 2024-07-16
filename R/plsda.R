@@ -13,19 +13,20 @@
 #' @param nr_folds nr_folds Integer to indicate the folds for cross validation.
 #' @return a list containing the following elements:
 #' \itemize{
-#' \item{\code{nc}}{ the number of components used(one joint components + 
-#'  number of orthogonal components }
-#' \item{\code{scores}}{ a matrix of scores corresponding to the observations 
+#' \item{}\code{nc} the number of components used(one joint components + 
+#'  number of orthogonal components 
+#' \item{}\code{scores} a matrix of scores corresponding to the observations 
 #' in \code{X}, The components retrieved correspond to the ones optimized 
-#' or specified.}
-#' \item{\code{Xloadings}}{ a matrix of loadings corresponding to the
+#' or specified.
+#' \item{}\code{Xloadings} a matrix of loadings corresponding to the
 #'  explanatory variables. The components retrieved correspond to the ones
-#'  optimized or specified.}
-#' \item{\code{vip}}{ the VIP matrix.}
-#' \item{\code{xvar}}{ variance explained of X by each single component.}
-#' \item{\code{R2Y}}{ variance explained of Y by each single component.}
-#' \item{code{PRESS}}{The residual sum of squares for the samples which were not used to fit the model}
-#' \item{code{Q2}}{quality of  cross-validation}}
+#'  optimized or specified.
+#' \item{}\code{vip} the VIP matrix.
+#' \item{}\code{xvar} variance explained of X by each single component.
+#' \item{}\code{R2Y} variance explained of Y by each single component.
+#' \item{}\code{PRESS} The residual sum of squares for the samples which were not used to fit the model
+#' \item{}\code{Q2} quality of  cross-validation
+#' }
 #' @examples 
 #' X <- matrix(rnorm(500),10,50)
 #' Y <- rep(c("a","b"),each=5)
