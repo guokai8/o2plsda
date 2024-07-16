@@ -57,10 +57,10 @@ a ggplot2 object
 Score, VIP or loading plot for the plsda results
 }
 \examples{
-X <- matrix(rnorm(50),10,5)
-yy <- rep(c(0,1),5)
-fit0 <- plsda(X,yy,2)
-plot(fit0, type = "score", group = factor(yy))
+X <- matrix(rnorm(500),10,50)
+Y <- rep(c("a","b"),each=5)
+fit0 <- plsda(X,Y,2)
+plot(fit0, type = "score", group = factor(Y))
 }
 \author{
 Kai Guo
