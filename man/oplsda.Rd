@@ -25,24 +25,25 @@ number of orthogonal components ).}
 \value{
 a list containing the following elements:
 \itemize{
-\item{\code{nc}}{ the number of components used(one joint components + 
- number of orthogonal components }
-\item{\code{scores}}{ a matrix of scores corresponding to the observations 
+\item{}\code{nc} the number of components used(one joint components + 
+ number of orthogonal components 
+\item{}\code{scores} a matrix of scores corresponding to the observations 
 in \code{X}, The components retrieved correspond to the ones optimized 
-or specified.}
-\item{\code{Xloadings}}{ a matrix of loadings corresponding to the
+or specified.
+\item{}\code{Xloadings} a matrix of loadings corresponding to the
  explanatory variables. The components retrieved correspond to the ones
- optimized or specified.}
-\item{\code{Yloadings}}{ a matrix of partial least squares loadings
- corresponding to \code{Y}}
-\item{\code{vip}}{ the VIP matrix.}
-\item{\code{xvar}}{ a matrix indicating the standard deviation of each
+ optimized or specified.
+\item{}\code{Yloadings} a matrix of partial least squares loadings
+ corresponding to \code{Y}
+\item{}\code{vip} the VIP matrix.
+\item{}\code{xvar} a matrix indicating the standard deviation of each
  component (sd), the variance explained by each single component
  (explained_var) and the cumulative explained variance
  (cumulative_explained_var). These values are
- computed based on the data used to create the projection matrices.}
-\item{\code{projection_matrix}}{ the matrix of  projection matrix}
-\item{\code{weight}}{ a matrix of partial least squares ("pls") weights.}}
+ computed based on the data used to create the projection matrices.
+\item{}\code{projection_matrix} the matrix of projection matrix
+\item{}\code{weight} a matrix of partial least squares ("pls") weights.
+}
 }
 \description{
 Computes orthogonal scores partial least squares 
