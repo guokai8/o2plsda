@@ -1,15 +1,13 @@
 Package: o2plsda
 Type: Package
-Title: Multiomics Data Integration 
-Version: 0.0.16
-Date: 2021-11-15
+Title: Multiomics Data Integration
+Version: 0.0.19
 Authors@R: c(person("Kai","Guo",email = "guokai8@gmail.com",
            role = c("aut", "cre")
           ),
           person("Junguk","Hur",role = "aut"),
           person("Eva","Feldman",role = "aut")
           )
-Maintainer: Kai Guo <guokai8@gmail.com>
 Description: Provides functions to do 'O2PLS-DA' analysis for multiple omics data integration.
             The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" 
             which published by Johan Trygg and Svante Wold at 2003 <doi:10.1002/cem.775>. 
@@ -17,11 +15,19 @@ Description: Provides functions to do 'O2PLS-DA' analysis for multiple omics dat
             two data sets (it was recently extended to multiple data sets) (Löfstedt and Trygg, 2011 <doi:10.1002/cem.1388>; Löfstedt et al., 2012 <doi:10.1016/j.aca.2013.06.026>) 
             from the systematic sources of variance being specific for each data set separately. 
 License: GPL-3
-Imports: Rcpp (>= 1.0.7), dplyr, magrittr, parallel, ggplot2, ggrepel, methods, stats
+Imports: Rcpp (>= 1.0.7), dplyr, magrittr, parallel, ggplot2, ggrepel,
+        methods, stats
 Depends:
 Encoding: UTF-8
-LazyData: true
 Suggests: knitr, markdown, rmarkdown
 VignetteBuilder: knitr
-LinkingTo: Rcpp, RcppArmadillo, RcppEigen
-RoxygenNote: 7.1.1
+LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 7.3.1
+NeedsCompilation: yes
+Repository: CRAN
+Packaged: 2022-08-12 06:54:52 UTC; bioguo
+Author: Kai Guo [aut, cre],
+  Junguk Hur [aut],
+  Eva Feldman [aut]
+Maintainer: Kai Guo <guokai8@gmail.com>
+Date/Publication: 2022-08-12 07:10:02 UTC
