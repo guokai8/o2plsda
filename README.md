@@ -48,38 +48,40 @@ set.seed(123)
 ## ncores : parallel paramaters for large datasets
 cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 10)
 #####################################
-# The best paramaters are nc =  5 , nx =  3 , ny =  3 
+# The best paramaters are nc =  5 , nx =  2 , ny =  3 
 #####################################
-# The Qxy is  0.08222935  and the RMSE is:  2.030108 
+# The Qxy is  0.082  and the RMSE is:  2.030108 
 #####################################
 ```
 
-Then we can do the O2PLS analysis with nc = 5, nx = 3, ny =3. You can also select the best paramaters by looking at the cross validation results.
+Then we can do the O2PLS analysis with nc = 5, nx = 2, ny =3. You can also select the best paramaters by looking at the cross validation results.
 ```{r}
-fit <- o2pls(X,Y,5,3,3)
+fit <- o2pls(X,Y,5,2,3)
 summary(fit)
 ######### Summary of the O2PLS results #########
-### Call o2pls(X, Y, nc= 5 , nx= 3 , ny= 3 ) ###
+### Call o2pls(X, Y, nc= 5 , nx= 2 , ny= 3 ) ###
 ### Total variation 
 ### X: 4900 ; Y: 4900  ###
-### Total modeled variation ### X: 0.286 ; Y: 0.304  ###
+### Total modeled variation ### X: 0.265 ; Y: 0.306  ###
 ### Joint, Orthogonal, Noise (proportions) ###
-#               X     Y
-#Joint      0.176 0.192
-#Orthogonal 0.110 0.112
-#Noise      0.714 0.696
-### Variation in X joint part predicted by Y Joint part: 0.906 
-### Variation in Y joint part predicted by X Joint part: 0.908 
+               X     Y
+Joint      0.191 0.197
+Orthogonal 0.074 0.109
+Noise      0.735 0.694
+### Variation in X joint part predicted by Y Joint part: 0.924 
+### Variation in Y joint part predicted by X Joint part: 0.926 
 ### Variation in each Latent Variable (LV) in Joint part: 
-#      LV1     LV2     LV3     LV4     LV5
-#X 181.764 179.595 191.210 152.174 157.819
-#Y 229.308 204.829 175.926 173.382 155.934
+    LV1   LV2   LV3   LV4   LV5
+X 0.040 0.039 0.041 0.037 0.035
+Y 0.049 0.045 0.035 0.037 0.032
 ### Variation in each Latent Variable (LV) in X Orthogonal part: 
-#      LV1     LV2     LV3
-#X 227.856 166.718 143.602
+   LV1   LV2
+X 0.04 0.034
 ### Variation in each Latent Variable (LV) in Y Orthogonal part: 
-#      LV1     LV2     LV3
-#Y 225.833 166.231 157.976
+    LV1   LV2  LV3
+Y 0.045 0.034 0.03
+
+############################################
 
 ```
 
