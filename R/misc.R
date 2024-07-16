@@ -122,3 +122,27 @@ vip <- function(x){
     return(res)
     
 }
+
+
+#' @title two matrix mutiplication
+#' @keywords internal 
+#' @return A matrix
+
+eigenmult<-function(A, B){
+  return(A %*% B)
+}
+
+#' @title three matrix mutiplication
+#' @keywords internal 
+#' @return A matrix
+eigenthree <- function(A, B, C){
+    return(A %*% B %*%C)
+}
+
+
+#' @title trans matrix * matrix
+#' @keywords internal 
+#' @return A matrix
+AtA <-function(A) {
+    return(crossprod(A))
+}
