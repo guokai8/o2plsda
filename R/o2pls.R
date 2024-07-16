@@ -95,8 +95,10 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
     
     # Calculate the PCA components of Y'T
    ## nn<-nc+max(nx+ny)
+    ###borrow idea from OmicsPLS
+    ns <- nc + max(nx, ny)
     CDW <- eigenmult(t(Y),X)
-    cdw <- svd(CDW,nu=nc,nv=nc)
+    cdw <- svd(CDW,nu=ns,nv=ns)
     Xloading <- cdw$v
     Yloading <- cdw$u
    # Xscore <- X %*% Xloading
@@ -119,6 +121,9 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
             PYosc[,i] <- p_yo
             WYosc[,i] <- wosc	
             #Xscore <- X%*%Xloading
+            CDW <- eigenmult(t(Y), X)
+            cdw <- svd(CDW, nu = nc, nv = nc)
+            Xloading <- cdw$v
             Xscore <- eigenmult(X, Xloading)
         }
     }
@@ -138,9 +143,18 @@ o2pls <- function(X,Y,nc,nx,ny,scale=FALSE,center=FALSE){
             PXosc[,i] <- p_xo
             CXosc[,i] <- cosc	
           #  Yscore <- Y%*%Yloading
+            cdw <- svd(CDW, nu = nc, nv = nc)
+            Yloading <- cdw$u
             Yscore <- eigenmult(Y, Yloading)
         }
     }
+    ##calculate again
+    CDW <- eigenmult(t(Y), X)
+    cdw <- svd(CDW, nu = nc, nv = nc)
+    Xloading <- cdw$v
+    Yloading <- cdw$u
+    Xscore <- eigenmult(X, Xloading)
+    Yscore <- eigenmult(Y, Yloading)
     BU <- eigenthree(solve(AtA(Yscore)),t(Yscore),Xscore)
     BT <- eigenthree(solve(AtA(Xscore)),t(Xscore),Yscore)
     Exy <- Xt - eigenmult(Xscore, t(Xloading)) - eigenmult(TYosc, t(PYosc))
