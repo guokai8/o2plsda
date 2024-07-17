@@ -120,13 +120,19 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
         # Predicts y_hat
         if(nx>0){
             To <- matrix(0,nrow(Xev),nx)
-        for (i in 1:nx) {
+    #    for (i in 1:nx) {
             #tx <- Xev %*% o2$WYosc[ , i,drop=F]
-            tx <- eigenmult(Xev, o2$WYosc[ , i,drop=F])
+         #   tx <- eigenmult(Xev, o2$WYosc[ , i,drop=F])
+            tx <- eigenmult(Xev, o2$WYosc)
+            
           #  Xev <- Xev - tx %*% t(o2$PYosc[ , i,drop=F])
-            Xev <- Xev - eigenmult(tx, t(o2$PYosc[ , i,drop=F]))
-            To[,i]<- tx
-        }}
+           # Xev <- Xev - eigenmult(tx, t(o2$PYosc[ , i,drop=F]))
+            Xev <- Xev - eigenmult(tx, t(o2$PYosc))
+            
+         #   To[,i]<- tx
+            To <- tx
+      #  }
+        }
       #  Tpp <- Xev %*% o2$Xloading
       #  Y_hat <- Tpp %*% o2$BT %*% t(o2$Yloading)
         Tpp <- eigenmult(Xev, o2$Xloading)
@@ -137,13 +143,17 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
         
         if(ny>0){
             Uo <- matrix(0,nrow(Yev),ny)
-        for (i in 1:ny) {
+      #  for (i in 1:ny) {
           #  ux <-  Yev %*% o2$CXosc[ , i,drop=F]
-            ux <-  eigenmult(Yev, o2$CXosc[ , i,drop=F])
+           # ux <-  eigenmult(Yev, o2$CXosc[ , i,drop=F])
+            ux <-  eigenmult(Yev, o2$CXosc)
+            
            # Yev <- Yev - ux %*% t(o2$PXosc[ , i,drop=F])
-            Yev <- Yev - eigenmult(ux, t(o2$PXosc[ , i,drop=F]))
-            Uo[,i] <- ux
-        }
+         #   Yev <- Yev - eigenmult(ux, t(o2$PXosc[ , i,drop=F]))
+            Yev <- Yev - eigenmult(ux, t(o2$PXosc))
+          #  Uo[,i] <- ux
+      #  }
+            Uo <- ux
         }
      #   Upp <- Yev %*% o2$Yloading
      #   X_hat <- Upp %*% o2$BU %*% t(o2$Xloading)
