@@ -164,8 +164,8 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
         Xev <- X[cls.grp == k & is.na(cls.grp)==FALSE,]
         Yev <- Y[cls.grp == k & is.na(cls.grp)==FALSE,]
         
-        tmp <- list(k=k, nc=n, nx=nx, ny=ny, Qx=Q(Xev,X_hat),
-                    Qy=Q(Yev,Y_hat),Px=s2(Xev-X_hat),Py=s2(Yev-Y_hat),
+        tmp <- list(k=k, nc=n, nx=nx, ny=ny, Qx=abs(Q(Xev,X_hat)),
+                    Qy=abs(Q(Yev,Y_hat)),Px=s2(Xev-X_hat),Py=s2(Yev-Y_hat),
                     Rx=rcpp_rmse(Xev,X_hat),Ry=rcpp_rmse(Yev,Y_hat))
         results <- append(results, list(tmp))
     }
