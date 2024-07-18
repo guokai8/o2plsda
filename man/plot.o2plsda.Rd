@@ -7,7 +7,6 @@
 \method{plot}{o2plsda}(
   x,
   type = "score",
-  var = "Xjoint",
   group = NULL,
   ind = c(1, 2),
   color = NULL,
@@ -26,8 +25,6 @@
 \item{x}{an o2plsda object}
 
 \item{type}{score, vip or loading}
-
-\item{var}{specify Xjoint}
 
 \item{group}{color used for score plot}
 
