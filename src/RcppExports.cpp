@@ -2,7 +2,6 @@
 // Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 #include <RcppArmadillo.h>
-#include <RcppEigen.h>
 #include <Rcpp.h>
 
 using namespace Rcpp;
@@ -12,42 +11,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// eigenmult
-SEXP eigenmult(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B);
-RcppExport SEXP _o2plsda_eigenmult(SEXP ASEXP, SEXP BSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Eigen::Map<Eigen::MatrixXd> >::type A(ASEXP);
-    Rcpp::traits::input_parameter< Eigen::Map<Eigen::MatrixXd> >::type B(BSEXP);
-    rcpp_result_gen = Rcpp::wrap(eigenmult(A, B));
-    return rcpp_result_gen;
-END_RCPP
-}
-// eigenthree
-SEXP eigenthree(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B, Eigen::Map<Eigen::MatrixXd> C);
-RcppExport SEXP _o2plsda_eigenthree(SEXP ASEXP, SEXP BSEXP, SEXP CSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Eigen::Map<Eigen::MatrixXd> >::type A(ASEXP);
-    Rcpp::traits::input_parameter< Eigen::Map<Eigen::MatrixXd> >::type B(BSEXP);
-    Rcpp::traits::input_parameter< Eigen::Map<Eigen::MatrixXd> >::type C(CSEXP);
-    rcpp_result_gen = Rcpp::wrap(eigenthree(A, B, C));
-    return rcpp_result_gen;
-END_RCPP
-}
-// AtA
-Eigen::MatrixXd AtA(const Eigen::Map<Eigen::MatrixXd>& A);
-RcppExport SEXP _o2plsda_AtA(SEXP ASEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Eigen::Map<Eigen::MatrixXd>& >::type A(ASEXP);
-    rcpp_result_gen = Rcpp::wrap(AtA(A));
-    return rcpp_result_gen;
-END_RCPP
-}
 // sort_str
 CharacterVector sort_str(std::vector< std::string > strings);
 RcppExport SEXP _o2plsda_sort_str(SEXP stringsSEXP) {
@@ -151,6 +114,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// colsds
+NumericVector colsds(arma::mat& X);
+RcppExport SEXP _o2plsda_colsds(SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(colsds(X));
+    return rcpp_result_gen;
+END_RCPP
+}
 // s2
 double s2(arma::mat x);
 RcppExport SEXP _o2plsda_s2(SEXP xSEXP) {
@@ -171,17 +145,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< arma::mat >::type y(ySEXP);
     Rcpp::traits::input_parameter< arma::mat >::type y_hat(y_hatSEXP);
     rcpp_result_gen = Rcpp::wrap(Q(y, y_hat));
-    return rcpp_result_gen;
-END_RCPP
-}
-// colsds
-NumericVector colsds(arma::mat& X);
-RcppExport SEXP _o2plsda_colsds(SEXP XSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
-    rcpp_result_gen = Rcpp::wrap(colsds(X));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -213,9 +176,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_o2plsda_eigenmult", (DL_FUNC) &_o2plsda_eigenmult, 2},
-    {"_o2plsda_eigenthree", (DL_FUNC) &_o2plsda_eigenthree, 3},
-    {"_o2plsda_AtA", (DL_FUNC) &_o2plsda_AtA, 1},
     {"_o2plsda_sort_str", (DL_FUNC) &_o2plsda_sort_str, 1},
     {"_o2plsda_sample_cpp", (DL_FUNC) &_o2plsda_sample_cpp, 2},
     {"_o2plsda_rcpp_rmse", (DL_FUNC) &_o2plsda_rcpp_rmse, 2},
@@ -225,9 +185,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_o2plsda_unlist_cpp", (DL_FUNC) &_o2plsda_unlist_cpp, 1},
     {"_o2plsda_sample_lapply", (DL_FUNC) &_o2plsda_sample_lapply, 2},
     {"_o2plsda_getMCCV_cpp", (DL_FUNC) &_o2plsda_getMCCV_cpp, 2},
+    {"_o2plsda_colsds", (DL_FUNC) &_o2plsda_colsds, 1},
     {"_o2plsda_s2", (DL_FUNC) &_o2plsda_s2, 1},
     {"_o2plsda_Q", (DL_FUNC) &_o2plsda_Q, 2},
-    {"_o2plsda_colsds", (DL_FUNC) &_o2plsda_colsds, 1},
     {"_o2plsda_column_sums", (DL_FUNC) &_o2plsda_column_sums, 1},
     {"_o2plsda_opls", (DL_FUNC) &_o2plsda_opls, 5},
     {NULL, NULL, 0}

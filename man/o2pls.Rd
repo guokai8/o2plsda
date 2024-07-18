@@ -35,8 +35,10 @@ An object containing
    \item{CXosc}{Orthogonal \eqn{Y} weights}
    \item{BU}{Regression coefficient in \code{Tt} ~ \code{U}}
    \item{BT}{Regression coefficient in \code{U} ~ \code{Tt}}
-   \item{R2Xhat}{Prediction of \eqn{X} with \eqn{Y}}
-   \item{R2Yhat}{Prediction of \eqn{Y} with \eqn{X}}
+   \item{Xhat}{Prediction of \eqn{X} with \eqn{Y}}
+   \item{Yhat}{Prediction of \eqn{Y} with \eqn{X}}
+   \item{R2Xhat}{Variation of the predicted \eqn{X} as proportion of variation in \eqn{X}}
+   \item{R2Yhat}{Variation of the predicted \eqn{Y} as proportion of variation in \eqn{Y}}
    \item{R2X}{Variation of the modeled part in \eqn{X} (defined by Joint + Orthogonal variation) as proportion of total variation in \eqn{X}}
    \item{R2Y}{Variation of the modeled part in \eqn{Y} (defined by Joint + Orthogonal variation) as proportion of total variation in \eqn{Y}}
    \item{R2Xcorr}{Variation of the joint part in \eqn{X} }

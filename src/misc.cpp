@@ -1,44 +1,11 @@
-#include <RcppArmadillo.h>
+#include <assert.h>
 #include <math.h>
 #include <iostream>
-#include <RcppEigen.h>
 #include <Rcpp.h>
-// [[Rcpp::depends(RcppArmadillo, RcppEigen)]]
 
-using namespace arma;
 using namespace Rcpp;
+using namespace std;
 
-//' @title two matrix mutiplication
-//' @keywords internal 
-//' @useDynLib o2plsda
-//' @return A matrix
-// [[Rcpp::export]]
-SEXP eigenmult(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B){
-    Eigen::MatrixXd C = A * B;
-    return Rcpp::wrap(C);
-}
-
-//' @title three matrix mutiplication
-//' @keywords internal 
-//' @useDynLib o2plsda
-//' @return A matrix
-// [[Rcpp::export]]
-SEXP eigenthree(Eigen::Map<Eigen::MatrixXd> A, Eigen::Map<Eigen::MatrixXd> B, Eigen::Map<Eigen::MatrixXd> C){
-    Eigen::MatrixXd D = A * B * C;
-    return Rcpp::wrap(D);
-}
-
-
-//' @title trans matrix * matrix
-//' @keywords internal 
-//' @useDynLib o2plsda
-//' @return A matrix
-// [[Rcpp::export]]
-Eigen::MatrixXd AtA(const Eigen::Map<Eigen::MatrixXd>& A) {
-    int n(A.cols());
-    return Eigen::MatrixXd(n,n).setZero().selfadjointView<Eigen::Lower>()
-                               .rankUpdate(A.adjoint());
-}
 
 //' @title sort string
 //' @keywords internal 
@@ -181,21 +148,4 @@ IntegerVector getMCCV_cpp(CharacterVector x,int n){
     }
     return(res);
 }
-//' @title sum square of a matrix
-//' @keywords internal 
-//' @useDynLib o2plsda
-//' @return sum square value of the vector
-// [[Rcpp::export]]
-double s2(arma::mat x){
-    return(arma::accu(pow(x,2)));
-}
 
-//' @title calcualte the Q value
-//' @keywords internal 
-//' @useDynLib o2plsda
-//' @return a numeric
-// [[Rcpp::export]]
-double Q(arma::mat y, arma::mat y_hat) {
-    arma::mat diff = y - y_hat;
-    return(1-s2(diff)/s2(y));
-}

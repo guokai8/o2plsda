@@ -1,5 +1,5 @@
 # o2plsda: Multiomics Data Integration
-# o2plsda [![Project Status:](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![](https://img.shields.io/badge/devel%20version-0.0.14-green.svg)](https://github.com/guokai8/o2plsda) <a href="https://cran.r-project.org/web/packages/o2plsda/index.html"><img border="0" src="http://www.r-pkg.org/badges/version/o2plsda" alt="CRAN version"> ![Code Size:](https://img.shields.io/github/languages/code-size/guokai8/o2plsda)![](https://img.shields.io/badge/license-GPL--3-blue.svg)[![DOI](https://zenodo.org/badge/413478714.svg)](https://zenodo.org/badge/latestdoi/413478714)![](http://cranlogs.r-pkg.org/badges/grand-total/o2plsda?color=green)
+# o2plsda [![Project Status:](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)  [![](https://img.shields.io/badge/devel%20version-0.0.24-green.svg)](https://github.com/guokai8/o2plsda) <a href="https://cran.r-project.org/web/packages/o2plsda/index.html"><img border="0" src="https://www.r-pkg.org/badges/version/o2plsda" alt="CRAN version"> ![Code Size:](https://img.shields.io/github/languages/code-size/guokai8/o2plsda)![](https://img.shields.io/badge/license-GPL--3-blue.svg)[![DOI](https://zenodo.org/badge/413478714.svg)](https://zenodo.org/badge/latestdoi/413478714)![](http://cranlogs.r-pkg.org/badges/grand-total/o2plsda?color=green)
 
 
 _o2plsda_ provides functions to do O2PLS-DA analysis for multiple omics integration.The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" which published by Johan Trygg and Svante Wold at 2003. O2PLS is a bidirectional multivariate regression method that aims to separate the covariance between two data sets (it was recently extended to multiple data sets) (Löfstedt and Trygg, 2011; Löfstedt et al., 2012) from the systematic sources of variance being specific for each data set separately. 
@@ -9,11 +9,6 @@ _o2plsda_ provides functions to do O2PLS-DA analysis for multiple omics integrat
 In order to avoid overfitting of the model, the optimal number of latent variables for each model structure was estimated using group-balanced MCCV. The package could use the group information when we select the best paramaters with cross-validation. In cross-validation (CV) one minimizes a certain measure of error over some parameters that should be determined a priori. Here, we have three parameters: (nc, nx, ny). A popular measure is the prediction error ||Y - \hat{Y}||, where \hat{Y} is a prediction of Y. In our case the O2PLS method is symmetric in X and Y, so we minimize the sum of the prediction errors: 
 ||X - \hat{X}||+||Y - \hat{Y}||. 
 
-And we also calculate the the average Q^2 values:
-
-Q^2 = 1 - err / Var_{total};    
-
-err = Var_{expected} - Var_{estimated};   
 
 Here nc should be a positive integer, and nx and ny should be non-negative. The best integers are then the minimizers of the prediction error.
 
@@ -48,38 +43,40 @@ set.seed(123)
 ## ncores : parallel paramaters for large datasets
 cv <- o2cv(X,Y,1:5,1:3,1:3,group=group,nr_folds = 10)
 #####################################
-# The best paramaters are nc =  5 , nx =  3 , ny =  3 
+The best parameters are nc = 1, nx = 2, ny = 3
 #####################################
-# The Qxy is  0.08222935  and the RMSE is:  2.030108 
+The the RMSE is: 1.98186790425324
 #####################################
 ```
 
-Then we can do the O2PLS analysis with nc = 5, nx = 3, ny =3. You can also select the best paramaters by looking at the cross validation results.
+Then we can do the O2PLS analysis with nc = 1, nx = 2, ny =3. You can also select the best paramaters by looking at the cross validation results.
 ```{r}
-fit <- o2pls(X,Y,5,3,3)
+fit <- o2pls(X,Y,1,2,3)
 summary(fit)
 ######### Summary of the O2PLS results #########
-### Call o2pls(X, Y, nc= 5 , nx= 3 , ny= 3 ) ###
+### Call o2pls(X, Y, nc= 1 , nx= 2 , ny= 3 ) ###
 ### Total variation 
 ### X: 4900 ; Y: 4900  ###
-### Total modeled variation ### X: 0.286 ; Y: 0.304  ###
+### Total modeled variation ### X: 0.12 ; Y: 0.16  ###
 ### Joint, Orthogonal, Noise (proportions) ###
-#               X     Y
-#Joint      0.176 0.192
-#Orthogonal 0.110 0.112
-#Noise      0.714 0.696
-### Variation in X joint part predicted by Y Joint part: 0.906 
-### Variation in Y joint part predicted by X Joint part: 0.908 
+               X     Y
+Joint      0.041 0.047
+Orthogonal 0.079 0.113
+Noise      0.880 0.840
+### Variation in X joint part predicted by Y Joint part: 0.934 
+### Variation in Y joint part predicted by X Joint part: 0.934 
 ### Variation in each Latent Variable (LV) in Joint part: 
-#      LV1     LV2     LV3     LV4     LV5
-#X 181.764 179.595 191.210 152.174 157.819
-#Y 229.308 204.829 175.926 173.382 155.934
+    LV1
+X 0.041
+Y 0.047
 ### Variation in each Latent Variable (LV) in X Orthogonal part: 
-#      LV1     LV2     LV3
-#X 227.856 166.718 143.602
+    LV1   LV2
+X 0.044 0.035
 ### Variation in each Latent Variable (LV) in Y Orthogonal part: 
-#      LV1     LV2     LV3
-#Y 225.833 166.231 157.976
+    LV1   LV2   LV3
+Y 0.046 0.035 0.033
+
+############################################
 
 ```
 
@@ -94,7 +91,7 @@ plot(fit,type="loading",var="Xjoint", group=group,repel=F,rotation=TRUE)
 
 Do the OPLSDA based on the O2PLS results
 ```{r}
-res <- oplsda(fit,group, nc=5)
+res <- oplsda(fit,group, nc=1)
 plot(res,type="score", group=group)
 vip <- vip(res)
 plot(res,type="vip", group = group, repel = FALSE,order=TRUE)
