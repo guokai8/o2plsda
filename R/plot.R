@@ -86,8 +86,13 @@ plot.O2pls <- function(x, type = "score", var = "Xjoint",group = NULL,
         if(isTRUE(ellipse)&!is.null(group)){
             p <- p + stat_ellipse()
         }
+        if(x@params$nc==1){
+            p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))+
+                ylab("")
+        }else{
         p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))+
-            ylab(xlab(paste0("LV",ind[2],"(",round(va[2]*100,2),"%)")))
+            ylab(paste0("LV",ind[2],"(",round(va[2]*100,2),"%)"))
+        }
         p <- p + theme_classic(base_size =14)
     }
     if(type == "loading"){
@@ -220,11 +225,12 @@ plot.o2plsda <- function(x,type = "score",group = NULL,
         if(isTRUE(ellipse)&!is.null(group)){
             p <- p + stat_ellipse()
         }
-        if(ncol(dd)==1){
-            p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))
+        if(x$ncomp==1){
+            p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))+
+                ylab("")
         }else{
         p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))+
-            ylab(xlab(paste0("LV",ind[2],"(",round(va[2]*100,2),"%)")))
+            ylab(paste0("LV",ind[2],"(",round(va[2]*100,2),"%)"))
         }
         p <- p + theme_classic(base_size =14)
     }
@@ -376,12 +382,9 @@ plot.plsda <- function(x,type = "score",group = NULL,
         if(isTRUE(ellipse)&!is.null(group)){
             p <- p + stat_ellipse()
         }
-        if(ncol(dd)==1){
-            p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))
-        }else{
+
         p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))+
-            ylab(xlab(paste0("LV",ind[2],"(",round(va[2]*100,2),"%)")))
-        }
+            ylab(paste0("LV",ind[2],"(",round(va[2]*100,2),"%)"))
         p <- p + theme_classic(base_size =14)
     }
     if(type == "vip"){
