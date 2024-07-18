@@ -149,7 +149,6 @@ plot.O2pls <- function(x, type = "score", var = "Xjoint",group = NULL,
 #' @importFrom stats reorder
 #' @param x an o2plsda object
 #' @param type score, vip or loading 
-#' @param var specify Xjoint
 #' @param group color used for score plot
 #' @param ind which components to be used for score plot or loading plot
 #' @param color color used for score or loading plot
@@ -172,14 +171,19 @@ plot.O2pls <- function(x, type = "score", var = "Xjoint",group = NULL,
 #' plot(fit0, type="score", group = factor(yy))
 #' @export
 #' @author Kai Guo
-plot.o2plsda <- function(x,type = "score", var = "Xjoint",group = NULL, 
+plot.o2plsda <- function(x,type = "score",group = NULL, 
                         ind = c(1,2), color = NULL,
                         top = 20, ellipse = TRUE,order=FALSE,
                         pt.size = 3, label = TRUE, label.size = 4,
                         repel=FALSE, rotation =FALSE,...){
     if(type == "score"){
         dd <- scores(x)
-        va <- x$xvar[2,ind]
+        if(x$ncomp==1){
+            va <- x$xvar[2,1] 
+        }else{
+            va <- x$xvar[2,ind]
+        }
+        
         dd <- as.data.frame(dd)
         if(ncol(dd)==1){
             dd <- dd[, 1, drop = FALSE]
@@ -216,8 +220,12 @@ plot.o2plsda <- function(x,type = "score", var = "Xjoint",group = NULL,
         if(isTRUE(ellipse)&!is.null(group)){
             p <- p + stat_ellipse()
         }
+        if(ncol(dd)==1){
+            p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))
+        }else{
         p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))+
             ylab(xlab(paste0("LV",ind[2],"(",round(va[2]*100,2),"%)")))
+        }
         p <- p + theme_classic(base_size =14)
     }
     if(type == "vip"){
@@ -368,8 +376,12 @@ plot.plsda <- function(x,type = "score",group = NULL,
         if(isTRUE(ellipse)&!is.null(group)){
             p <- p + stat_ellipse()
         }
+        if(ncol(dd)==1){
+            p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))
+        }else{
         p <- p + xlab(paste0("LV",ind[1],"(",round(va[1]*100,2),"%)"))+
             ylab(xlab(paste0("LV",ind[2],"(",round(va[2]*100,2),"%)")))
+        }
         p <- p + theme_classic(base_size =14)
     }
     if(type == "vip"){

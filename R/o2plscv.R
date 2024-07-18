@@ -72,20 +72,20 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
     res <- do.call("c",res)
     results <- as.data.frame(t(sapply(res, function(x)unlist(x))))
     results <- results%>%group_by(nc,nx,ny)%>%
-        summarise(Qx=mean(Qx),Qy=mean(Qy),Px=mean(Px),Py=mean(Py),Rx=mean(Rx),Ry=mean(Ry))%>%
-        mutate(RMSE=Rx+Ry,Qxy=sqrt(Qx^2+Qy^2))%>%arrange(desc(Qxy))
+        summarise(Px=mean(Px),Py=mean(Py),Rx=mean(Rx),Ry=mean(Ry))%>%
+        mutate(RMSE=Rx+Ry)%>%arrange(RMSE)
                                       
   ### results <- results%>%filter(Qx>=0,Qy>=0) 
    ### not sure if meaningful                                   
     nc <- as.data.frame(results)[1,1]
     nx <- as.data.frame(results)[1,2]
     ny <- as.data.frame(results)[1,3]
-    Qxy <- as.data.frame(results)[1,11]
-    RMSE <- as.data.frame(results)[1,10]
+  #  Qxy <- as.data.frame(results)[1,11]
+    RMSE <- as.data.frame(results)[1,8]
     message("#####################################")
     message("The best parameters are nc = ",nc,", nx = ",nx,", ny = ",ny)
     message("#####################################")
-    message("The Qxy is ",Qxy, " and the RMSE is: ", RMSE)
+    message("The the RMSE is: ", RMSE)
     message("#####################################")
     return(results)
 }
@@ -163,9 +163,11 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
         # Restore to original values
         Xev <- X[cls.grp == k & is.na(cls.grp)==FALSE,]
         Yev <- Y[cls.grp == k & is.na(cls.grp)==FALSE,]
-        
-        tmp <- list(k=k, nc=n, nx=nx, ny=ny, Qx=abs(Q(Xev,X_hat)),
-                    Qy=abs(Q(Yev,Y_hat)),Px=s2(Xev-X_hat),Py=s2(Yev-Y_hat),
+        #####
+        #### just use the RMSE to determine the best paramaters
+        ### some thing shown wrong results with Q values
+        tmp <- list(k=k, nc=n, nx=nx, ny=ny, 
+                    Px=s2(Xev-X_hat),Py=s2(Yev-Y_hat),
                     Rx=rcpp_rmse(Xev,X_hat),Ry=rcpp_rmse(Yev,Y_hat))
         results <- append(results, list(tmp))
     }
