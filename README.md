@@ -1,6 +1,6 @@
 # o2plsda: Multiomics Data Integration
 # o2plsda [![Project Status:](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)  [![](https://img.shields.io/badge/devel%20version-0.0.25-green.svg)](https://github.com/guokai8/o2plsda) <a href="https://cran.r-project.org/web/packages/o2plsda/index.html"><img border="0" src="https://www.r-pkg.org/badges/version/o2plsda" alt="CRAN version"> ![Code Size:](https://img.shields.io/github/languages/code-size/guokai8/o2plsda)![](https://img.shields.io/badge/license-GPL--3-blue.svg)[![DOI](https://zenodo.org/badge/413478714.svg)](https://zenodo.org/badge/latestdoi/413478714)![](http://cranlogs.r-pkg.org/badges/grand-total/o2plsda?color=green)
-
+<img src="https://cranlogs.r-pkg.org/badges/grand-total/o2plsda" alt="">
 
 _o2plsda_ provides functions to do O2PLS-DA analysis for multiple omics integration.The algorithm came from "O2-PLS, a two-block (X±Y) latent variable regression (LVR) method with an integral OSC filter" which published by Johan Trygg and Svante Wold at 2003. O2PLS is a bidirectional multivariate regression method that aims to separate the covariance between two data sets (it was recently extended to multiple data sets) (Löfstedt and Trygg, 2011; Löfstedt et al., 2012) from the systematic sources of variance being specific for each data set separately. 
 
