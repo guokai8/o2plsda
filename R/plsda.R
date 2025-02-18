@@ -111,7 +111,7 @@ plsda <- function(X,Y,nc,scale=TRUE, center=TRUE, cv = TRUE, nr_folds = 5){
         rank_X = sum(Xs$d > 0.0001)
         nc = min(n, rank_X)
     }
-    if(nc == n) nc == n - 1
+    if(nc == n) nc <- n - 1
     W <- matrix(0, m, nc)
     U <- matrix(0, n, nc)
     Tt <- matrix(0, n, nc)
