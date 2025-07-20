@@ -2,23 +2,20 @@
 % Please edit documentation in R/plsda.R
 \name{.pls}
 \alias{.pls}
-\title{Partial least squares discriminant analysis}
+\title{Internal PLS function}
 \usage{
-.pls(X, Y, nc, cv = TRUE, nr_folds = 5)
-}
-\arguments{
-\item{X}{a matrix of predictor variables.}
-
-\item{Y}{a single vector indicate the group}
-
-\item{nc}{the number of pls components .}
-
-\item{cv}{logical indicating whether cross-validation will be performed or not (suggest TRUE).}
-
-\item{nr_folds}{nr_folds Integer to indicate the folds for cross validation.
-@return list with PLS results}
+.pls(
+  X,
+  Y,
+  nc,
+  cv = TRUE,
+  nr_folds = 5,
+  tol = 1e-06,
+  max_iter = 100,
+  q2_threshold = 0.05
+)
 }
 \description{
-Perform a PLS discriminant analysis
+Internal function to perform PLS calculations
 }
 \keyword{internal}

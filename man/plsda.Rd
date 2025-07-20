@@ -4,50 +4,43 @@
 \alias{plsda}
 \title{Partial least squares discriminant analysis}
 \usage{
-plsda(X, Y, nc, scale = TRUE, center = TRUE, cv = TRUE, nr_folds = 5)
+plsda(
+  X,
+  Y,
+  nc,
+  scale = TRUE,
+  center = TRUE,
+  cv = TRUE,
+  nr_folds = 5,
+  tol = 1e-06,
+  max_iter = 100,
+  q2_threshold = 0.05
+)
 }
 \arguments{
 \item{X}{a matrix of predictor variables.}
 
 \item{Y}{a single vector indicate the group}
 
-\item{nc}{the number of pls components (the one joint components + 
-number of orthogonal components ).}
+\item{nc}{the number of pls components}
 
-\item{scale}{logical indicating whether \code{X} must be scaled (suggest TRUE).}
+\item{scale}{logical indicating whether X must be scaled (suggest TRUE).}
 
-\item{center}{logical indicating whether \code{X} must be centered (suggest TRUE).}
+\item{center}{logical indicating whether X must be centered (suggest TRUE).}
 
 \item{cv}{logical indicating whether cross-validation will be performed or not (suggest TRUE).}
 
-\item{nr_folds}{nr_folds Integer to indicate the folds for cross validation.}
+\item{nr_folds}{Integer to indicate the folds for cross validation.}
+
+\item{tol}{Convergence tolerance (default: 1e-6)}
+
+\item{max_iter}{Maximum number of iterations (default: 100)}
+
+\item{q2_threshold}{Q2 threshold for component selection (default: 0.05)}
 }
 \value{
-a list containing the following elements:
-\itemize{
-\item{}\code{nc} the number of components used(one joint components + 
- number of orthogonal components 
-\item{}\code{scores} a matrix of scores corresponding to the observations 
-in \code{X}, The components retrieved correspond to the ones optimized 
-or specified.
-\item{}\code{Xloadings} a matrix of loadings corresponding to the
- explanatory variables. The components retrieved correspond to the ones
- optimized or specified.
-\item{}\code{vip} the VIP matrix.
-\item{}\code{xvar} variance explained of X by each single component.
-\item{}\code{R2Y} variance explained of Y by each single component.
-\item{}\code{PRESS} The residual sum of squares for the samples which were not used to fit the model
-\item{}\code{Q2} quality of  cross-validation
-}
+a list containing PLS-DA results
 }
 \description{
 Perform a PLS discriminant analysis
-}
-\examples{
-X <- matrix(rnorm(500),10,50)
-Y <- rep(c("a","b"),each=5)
-fit <- plsda(X,Y,2)
-}
-\author{
-Kai Guo
 }
