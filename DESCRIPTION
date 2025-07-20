@@ -1,7 +1,7 @@
 Package: o2plsda
 Type: Package
 Title: Multiomics Data Integration
-Version: 0.0.25
+Version: 0.0.28
 Authors@R: c(person("Kai","Guo",email = "guokai8@gmail.com",
            role = c("aut", "cre")
           ),
@@ -22,7 +22,7 @@ Encoding: UTF-8
 Suggests: knitr, markdown, rmarkdown
 VignetteBuilder: knitr
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 URL: https://github.com/guokai8/o2plsda
 NeedsCompilation: yes
 Repository: CRAN
