@@ -173,3 +173,26 @@ o2cv<-function(X, Y, nc, nx, ny, group=NULL, nr_folds = 5, ncores=1,
     }
     return(results)
 }
+
+# Add sparse parameter to existing o2cv function
+o2cv_enhanced <- function(X, Y, nc, nx, ny, group = NULL, nr_folds = 5,
+                          ncores = 1, scale = FALSE, center = FALSE,
+                          sparse = FALSE, keepX = NULL, keepY = NULL,
+                          tune_sparse = FALSE, validation = "Mfold") {
+    
+    if(sparse || tune_sparse) {
+        # Use new sparse cross-validation
+        if(tune_sparse && is.null(keepX)) {
+            tune_result <- tune_sparse_keepX(X, Y, max(nc), seq(5, 50, 5), 
+                                             validation, nr_folds)
+            keepX <- tune_result$choice.keepX
+            message("Auto-selected keepX: ", paste(keepX, collapse = ", "))
+        }
+        
+        return(sparse_o2cv(X, Y, nc, nx, ny, group, nr_folds, 
+                           keepX, keepY, validation, ncores))
+    } else {
+        # Use your existing o2cv implementation
+        return(o2cv(X, Y, nc, nx, ny, group, nr_folds, ncores, scale, center))
+    }
+}
