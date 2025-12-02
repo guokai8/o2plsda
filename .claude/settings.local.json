@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(for func in plot_optimal_params_impl plot_sparse_plsda_classification plot_sparse_plsda_scores plot_sparse_plsda_selection plot_sparse_plsda_vip plot_sparse_s4_biplot plot_sparse_s4_comparison plot_sparse_s4_contribution plot_sparse_s4_diagnostic plot_sparse_s4_scores plot_stability_barplot_impl plot_stability_network_impl plot_stability_summary_impl plot_stability_threshold_impl)",
+      "Bash(do)",
+      "Bash(if grep -q \"$func <- function\" R/plot.R)",
+      "Bash(then)",
+      "Bash(echo:*)",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(R:*)",
+      "Bash(Rscript:*)",
+      "Bash(timeout 120 Rscript:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
